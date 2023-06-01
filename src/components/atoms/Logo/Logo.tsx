@@ -1,10 +1,9 @@
-import { FC } from "react"
+import { FC } from 'react';
 
-import LogoURL from "../../../assets/images/logo.png"
+import LogoURL from '../../../assets/images/logo.png';
 
 const Logo: FC = () => {
-    return <img src={LogoURL} />
-}
+  return <img src={LogoURL} />;
+};
 
-export default Logo
-
+export default Logo;

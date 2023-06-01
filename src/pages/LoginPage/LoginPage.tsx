@@ -1,7 +1,7 @@
-import { FC } from "react"
+import { FC } from 'react';
 
 const LoginPage: FC = () => {
-    return <>LoginPage</>
-}
+  return <>LoginPage</>;
+};
 
-export default LoginPage
+export default LoginPage;

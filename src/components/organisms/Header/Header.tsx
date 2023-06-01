@@ -1,11 +1,11 @@
-import { FC } from "react"
-import Logo from "@atoms/Logo"
+import { FC } from 'react';
+import Logo from '@atoms/Logo';
 
 const Header: FC = () => {
-    return (
-        <header>
-            <Logo />
-        </header>
-    )
-}
-export default Header
+  return (
+    <header>
+      <Logo />
+    </header>
+  );
+};
+export default Header;

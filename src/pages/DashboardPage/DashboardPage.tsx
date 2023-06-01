@@ -1,7 +1,7 @@
-import { FC } from "react"
+import { FC } from 'react';
 
 const DashboardPage: FC = () => {
-    return <>DashboardPage</>
-}
+  return <>DashboardPage</>;
+};
 
-export default DashboardPage
+export default DashboardPage;

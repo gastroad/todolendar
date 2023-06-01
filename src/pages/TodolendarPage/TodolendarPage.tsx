@@ -1,7 +1,7 @@
-import { FC } from "react"
+import { FC } from 'react';
 
 const TodolendarPage: FC = () => {
-    return <>TodolendarPage</>
-}
+  return <>TodolendarPage</>;
+};
 
-export default TodolendarPage
+export default TodolendarPage;

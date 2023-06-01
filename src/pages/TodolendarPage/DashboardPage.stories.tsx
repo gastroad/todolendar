@@ -1,15 +1,12 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from '@storybook/react';
 
-import TodolendarPage from "./TodolendarPage";
-
+import TodolendarPage from './TodolendarPage';
 
 const meta: Meta<typeof TodolendarPage> = {
-    title: 'pages/TodolendarPage',
-    component: TodolendarPage,
+  title: 'pages/TodolendarPage',
+  component: TodolendarPage,
 };
 export default meta;
-
-
 
 type Story = StoryObj<typeof TodolendarPage>;
 
