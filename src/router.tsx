@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import App from "@src/App"
+import LayoutTemplate from "@templates/LayoutTemplate"
+
 import DashboardPage from "@pages/DashboardPage";
 import TodoLendarPage from "@pages/TodolendarPage";
 import LoginPage from "@pages/LoginPage";
@@ -9,7 +10,7 @@ import LoginPage from "@pages/LoginPage";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <App />,
+        element: <LayoutTemplate />,
         children: [
             {
                 path: "dashbaord",
