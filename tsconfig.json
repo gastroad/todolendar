@@ -8,40 +8,20 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./src",
     "paths": {
-      "@src/*": [
-        "./src/*"
-      ],
-      "@assets/*": [
-        "./src/assets/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@atoms/*": [
-        "./src/components/atoms/*"
-      ],
-      "@molecules/*": [
-        "./src/component/molecules/*"
-      ],
-      "@organisms/*": [
-        "./src/components/organisms/*"
-      ],
-      "@templates/*": [
-        "./src/templates/*"
-      ],
-      "@pages/*": [
-        "./src/pages/*"
-      ],
-      "@types/*": [
-        "./src/types/*"
-      ],
-      "@api/*": [
-        "./src/api/*"
-      ],
+      "@src/*": ["*"],
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@atoms/*": ["components/atoms/*"],
+      "@molecules/*": ["components/molecules/*"],
+      "@organisms/*": ["components/organisms/*"],
+      "@templates/*": ["templates/*"],
+      "@pages/*": ["pages/*"],
+      "@types/*": ["types/*"],
+      "@api/*": ["api/*"]
     },
-    "typeRoots": [
-      "src/types"
-    ],
-  }
+    "types": ["jest", "@testing-library/jest-dom"]
+  },
+  "include": ["src"]
 }

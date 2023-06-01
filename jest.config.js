@@ -2,8 +2,10 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: "jsdom",
+  setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],
+  collectCoverage: true,
+  coverageReporters: ["lcov", "text-summary"],
   moduleNameMapper: {
-    '^@src/(.*)$': '<rootDir>/src/$1',
     '^@src/(.*)$': '<rootDir>/src/$1',
     '^@assets/(.*)$': '<rootDir>/src/assets/$1',
     '^@components/(.*)$': '<rootDir>/src/components/$1',
@@ -14,20 +16,8 @@ module.exports = {
     '^@pages/(.*)$': '<rootDir>/src/pages/$1',
     '^@types/(.*)$': '<rootDir>/src/types/$1',
     '^@api/(.*)$': '<rootDir>/src/api/$1',
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+    '\\.(css|less|scss)$': 'identity-obj-proxy',
   },
-  testMatch: [
-    "<rootDir>/src/**/*.test.ts",
-    "<rootDir>/src/**/*.test.tsx",
-  ],
-  moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
-  transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest",
-  },
-  collectCoverageFrom: [
-    "src/**/*.{ts,tsx}",
-    "!src/**/*.d.ts",
-    "!src/**/*.test.{ts,tsx}",
-  ],
-  coverageReporters: ["lcov", "text-summary"],
 };
 
