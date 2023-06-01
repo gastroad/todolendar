@@ -1,12 +1,12 @@
 import { FC } from "react"
+import { Outlet } from "react-router";
 
-import Logo from "@assets/images/logo.png"
 
 const App: FC = () => {
     return (
         <>
-            <img src={Logo} style={{ backgroundColor: "red" }} />
-            asd
+            <Outlet />
+            App
         </>
     );
 };
