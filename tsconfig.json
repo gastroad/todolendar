@@ -14,7 +14,31 @@
       ],
       "@assets/*": [
         "./src/assets/*"
-      ]
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@atoms/*": [
+        "./src/components/atoms/*"
+      ],
+      "@molecules/*": [
+        "./src/component/molecules/*"
+      ],
+      "@organisms/*": [
+        "./src/components/organisms/*"
+      ],
+      "@templates/*": [
+        "./src/templates/*"
+      ],
+      "@pages/*": [
+        "./src/pages/*"
+      ],
+      "@types/*": [
+        "./src/types/*"
+      ],
+      "@api/*": [
+        "./src/api/*"
+      ],
     },
     "typeRoots": [
       "src/types"
