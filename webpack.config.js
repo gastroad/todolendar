@@ -16,7 +16,7 @@ module.exports = {
             "@assets": path.resolve(__dirname, "src/assets/"),
             "@components": path.resolve(__dirname, "src/components/"),
             "@atoms": path.resolve(__dirname, "src/components/atoms/"),
-            "@molecules": path.resolve(__dirname, "src/component/molecules/"),
+            "@molecules": path.resolve(__dirname, "src/components/molecules/"),
             "@organisms": path.resolve(__dirname, "src/components/organisms/"),
             "@templates": path.resolve(__dirname, "src/templates/"),
             "@pages": path.resolve(__dirname, "src/pages/"),
