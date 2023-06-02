@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
+    "storybook-addon-react-router-v6"
   ],
   framework: {
     name: "@storybook/react-webpack5",
@@ -17,6 +18,12 @@ const config: StorybookConfig = {
   },
   webpackFinal: async (config) => {
     config.resolve!.alias = { ...config.resolve!.alias, ...projectWebpackConfig.resolve.alias, };
+    if (config.module && config.module.rules) {
+      config.module.rules.push({
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      });
+    }
     return config;
   },
 };
