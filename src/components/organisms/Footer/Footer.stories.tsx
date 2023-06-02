@@ -10,4 +10,9 @@ export default meta;
 
 type Story = StoryObj<typeof Footer>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    email: 'test@test.com',
+    adminName: '홍길동',
+  }
+};
