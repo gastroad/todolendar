@@ -3,17 +3,14 @@ import { Outlet } from 'react-router';
 import Header from '@organisms/Header';
 import Footer from '@organisms/Footer';
 
-import "./LayoutTemplate.scss"
+import './LayoutTemplate.scss';
 
 const LayoutTemplate: FC = () => {
   return (
     <>
       <Header />
       <Outlet />
-      <Footer
-        email="coldpotatosweet@gmail.com"
-        adminName="진현성"
-      />
+      <Footer email="coldpotatosweet@gmail.com" adminName="진현성" />
     </>
   );
 };

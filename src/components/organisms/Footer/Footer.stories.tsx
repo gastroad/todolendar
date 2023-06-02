@@ -14,5 +14,5 @@ export const Default: Story = {
   args: {
     email: 'test@test.com',
     adminName: '홍길동',
-  }
+  },
 };

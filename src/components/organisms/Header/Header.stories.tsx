@@ -10,9 +10,8 @@ const meta: Meta<typeof Header> = {
   parameters: {
     reactRouter: {
       routePath: '/',
-    }
-  }
-
+    },
+  },
 };
 export default meta;
 

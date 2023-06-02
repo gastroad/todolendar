@@ -13,5 +13,5 @@ type Story = StoryObj<typeof FooterAdmin>;
 export const Default: Story = {
   args: {
     adminName: '홍길동',
-  }
+  },
 };

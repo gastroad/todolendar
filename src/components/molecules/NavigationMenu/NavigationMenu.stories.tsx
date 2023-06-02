@@ -4,14 +4,14 @@ import { withRouter } from 'storybook-addon-react-router-v6';
 import NavigationMenu from './NavigationMenu';
 
 const meta: Meta<typeof NavigationMenu> = {
-    title: 'components/molecules/NavigationMenu',
-    component: NavigationMenu,
-    decorators: [withRouter],
-    parameters: {
-        reactRouter: {
-            routePath: '/',
-        }
-    }
+  title: 'components/molecules/NavigationMenu',
+  component: NavigationMenu,
+  decorators: [withRouter],
+  parameters: {
+    reactRouter: {
+      routePath: '/',
+    },
+  },
 };
 export default meta;
 

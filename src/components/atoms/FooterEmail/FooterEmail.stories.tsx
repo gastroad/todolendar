@@ -12,6 +12,6 @@ type Story = StoryObj<typeof FooterEmail>;
 
 export const Default: Story = {
   args: {
-    email: "test@test.com"
-  }
+    email: 'test@test.com',
+  },
 };

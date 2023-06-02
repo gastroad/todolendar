@@ -3,13 +3,10 @@ import Footer from './Footer';
 
 describe('Footer', () => {
   test('renders footer with correct information', () => {
-
     const email = 'test@test.com';
     const adminName = '홍길동';
 
-    render(
-      <Footer email={email} adminName={adminName} />
-    );
+    render(<Footer email={email} adminName={adminName} />);
 
     const footerElement = screen.getByTestId('footer');
     expect(footerElement).toBeInTheDocument();
