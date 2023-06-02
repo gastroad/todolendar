@@ -6,7 +6,7 @@ import "./Header.scss"
 
 const Header: FC = () => {
   return (
-    <header id='header'>
+    <header id='header' data-testid="header">
       <h1><Logo /></h1>
       <NavigationMenu />
     </header>
