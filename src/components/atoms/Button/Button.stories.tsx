@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Button>;
 export const Default: Story = {
   args: {
     label: '버튼',
-    onClick: () => { },
-    type: "primary"
+    onClick: () => {},
+    type: 'primary',
   },
 };
