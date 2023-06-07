@@ -18,3 +18,15 @@ npm run dev
 ```
 npm run build
 ```
+
+### storybook 실행 방법
+
+```
+npm run storybook
+```
+
+### test 실행 방법
+
+```
+npm run test
+```
