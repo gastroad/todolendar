@@ -12,5 +12,6 @@ export const Default: Story = {
   args: {
     onClick: () => {},
     direction: 'left',
+    name: '',
   },
 };

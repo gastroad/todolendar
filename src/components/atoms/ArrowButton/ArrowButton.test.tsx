@@ -5,7 +5,7 @@ test('renders arrow button', () => {
   const mockOnClick = jest.fn();
   const direction = 'left';
   const { container } = render(
-    <ArrowButton onClick={mockOnClick} direction={direction} />,
+    <ArrowButton onClick={mockOnClick} direction={direction} name="" />,
   );
 
   const buttonElement = container.firstChild;
@@ -20,7 +20,7 @@ test('calls onClick', () => {
   const mockOnClick = jest.fn();
   const direction = 'right';
   const { container } = render(
-    <ArrowButton onClick={mockOnClick} direction={direction} />,
+    <ArrowButton onClick={mockOnClick} direction={direction} name="" />,
   );
 
   const buttonElement = container.firstChild;

@@ -6,6 +6,7 @@ import './ArrowButton.scss';
 interface ArrowButtonProps {
   onClick: () => void;
   direction: 'left' | 'right';
+  name: string;
 }
 
 export const directionMapper = {
@@ -13,9 +14,14 @@ export const directionMapper = {
   right: RightArrowURL,
 };
 
-const ArrowButton: FC<ArrowButtonProps> = ({ onClick, direction }) => {
+const ArrowButton: FC<ArrowButtonProps> = ({ onClick, direction, name }) => {
   return (
-    <button className={`arrow-btn ${direction}`} onClick={onClick}>
+    <button
+      className={`arrow-btn ${direction}`}
+      onClick={onClick}
+      name={name}
+      data-testid={name}
+    >
       <img src={directionMapper[direction]} />
     </button>
   );
