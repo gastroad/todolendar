@@ -1,7 +1,12 @@
 import { FC } from 'react';
+import TodolendarTemplate from '@templates/TodolendarTemplate';
 
 const TodolendarPage: FC = () => {
-  return <>TodolendarPage</>;
+  return (
+    <>
+      <TodolendarTemplate />
+    </>
+  );
 };
 
 export default TodolendarPage;
