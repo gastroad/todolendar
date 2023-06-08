@@ -1,4 +1,9 @@
-footer {
-    position: absolute;
-    bottom: 0px;
+// footer {
+// position: fixed;
+// bottom: 0px;
+// }
+
+section {
+    margin-bottom: 100px;
+    min-height: calc(100vh - 168px);
 }
