@@ -1,0 +1,14 @@
+@import "../../../assets/styles/variables.scss";
+
+.input-txt {
+  all: unset;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid $secondary-color;
+  border-radius: 5px;
+  transition: 0.2s;
+  outline: none;
+  &:focus {
+    border: 1px solid $primary-color;
+  }
+}
