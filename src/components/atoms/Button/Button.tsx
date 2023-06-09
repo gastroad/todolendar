@@ -5,11 +5,15 @@ import './Button.scss';
 interface ButtonProps {
   onClick: () => void;
   label: string;
-  type: 'primary' | 'secondary';
+  type: 'primary' | 'secondary' | 'tertiary';
+  active?: boolean;
 }
-const Button: FC<ButtonProps> = ({ onClick, label, type }) => {
+const Button: FC<ButtonProps> = ({ onClick, label, type, active = false }) => {
   return (
-    <button className={`btn ${type}`} onClick={onClick}>
+    <button
+      className={`btn ${type} ${active ? 'active' : ''}`}
+      onClick={onClick}
+    >
       {label}
     </button>
   );

@@ -13,7 +13,8 @@
         &:hover {
             background-color: darken($primary-color, 10%);
         }
-        &:active {
+        &:active,
+        &.active {
             background-color: darken($primary-color, 20%);
         }
     }
@@ -23,8 +24,28 @@
         &:hover {
             background-color: lighten($secondary-color, 10%);
         }
-        &:active {
+        &:active,
+        &.active {
             background-color: lighten($secondary-color, 20%);
         }
     }
+    &.tertiary {
+        color: $secondary-color;
+        background-color: #fff;
+        &:hover {
+            background-color: darken(#fff, 10%);
+        }
+        &:active,
+        &.active {
+            background-color: darken(#fff, 20%);
+        }
+    }
 }
+
+// 'quaternary' (4차)
+// 'quinary' (5차)
+// 'senary' (6차)
+// 'septenary' (7차)
+// 'octonary' (8차)
+// 'nonary' (9차)
+// 'denary' (10차)
