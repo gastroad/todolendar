@@ -2,6 +2,8 @@ import { FC } from 'react';
 import { DateTime } from 'luxon';
 import cx from 'classnames';
 
+import './CalendarCell.scss';
+
 export interface CalendarCellProps {
   dayOfMonth: number;
   isCurrentDate: boolean;
@@ -15,10 +17,15 @@ const CalendarCell: FC<CalendarCellProps> = ({
   handleDateSelect,
   date,
 }) => {
+  const isToday = date.startOf('day').equals(DateTime.now().startOf('day'));
   return (
     <div
       key={`day-${dayOfMonth}`}
-      className={cx('calendar-cell', { 'current-date': isCurrentDate })}
+      className={cx(
+        'calendar-cell',
+        { 'current-date': isCurrentDate },
+        { today: isToday },
+      )}
       onClick={() => handleDateSelect(date)}
     >
       <span>{dayOfMonth}</span>

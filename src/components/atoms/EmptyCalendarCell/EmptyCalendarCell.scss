@@ -1,0 +1,7 @@
+.empty-calenar-cell {
+    flex-basis: calc(100% / 7);
+    height: 0;
+    padding-bottom: calc(100% / 7);
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
