@@ -13,8 +13,6 @@ type Story = StoryObj<typeof CalendarBody>;
 export const Default: Story = {
   args: {
     currentDate: DateTime.local(2023, 1, 15),
-    handleDateSelect: (date) => {
-      console.log(date);
-    },
+    handleDateSelect: (date) => {},
   },
 };
