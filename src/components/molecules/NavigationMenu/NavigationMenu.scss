@@ -19,7 +19,7 @@
                 text-decoration: none;
                 color: $secondary-color;
                 &:hover,
-                .active {
+                &.active {
                     color: $accent-color;
                     text-decoration: underline;
                 }
