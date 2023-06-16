@@ -5,6 +5,7 @@ const PORT = 9000;
 const { v4: uuidv4 } = require('uuid');
 
 const dataFilePath = './data.json';
+const userFilePath = './user.json'
 
 function loadData() {
     const data = fs.readFileSync(dataFilePath);
@@ -14,6 +15,16 @@ function loadData() {
 function saveData(data) {
     const json = JSON.stringify(data);
     fs.writeFileSync(dataFilePath, json);
+}
+
+function loadUser() {
+    const data = fs.readFileSync(userFilePath);
+    return JSON.parse(data);
+}
+
+function saveUser(data) {
+    const json = JSON.stringify(data);
+    fs.writeFileSync(userFilePath, json);
 }
 
 app.get('/api/todolist', (req, res) => {
@@ -86,6 +97,50 @@ app.delete('/api/todolist/:id', (req, res) => {
     saveData(data);
 
     res.json({ message: 'Todo item deleted successfully' });
+});
+
+app.post('/api/signup', (req, res) => {
+    const { username, password } = req.body;
+    const users = JSON.parse(fs.readFileSync('user.json'));
+
+    const newUser = {
+        username,
+        password,
+    };
+
+    users.push(newUser);
+
+    saveUser(users)
+    res.json({ message: '회원가입이 완료되었습니다.' });
+});
+
+app.post('/api/login', (req, res) => {
+    const { username, password } = req.body;
+    const users = loadUser()
+
+    const user = users.find((u) => u.username === username && u.password === password);
+
+    if (!user) {
+        res.status(401).json({ message: '유효한 사용자 정보가 아닙니다.' });
+    } else {
+        res.json({ message: '로그인이 완료되었습니다.' });
+    }
+});
+
+app.post('/api/logout', (req, res) => {
+    res.json({ message: '로그아웃이 완료되었습니다.' });
+});
+
+app.delete('/api/user', (req, res) => {
+    const { username } = req.body;
+
+    const users = loadUser()
+
+    const updatedUsers = users.filter((user) => user.username !== username);
+
+    saveUser(updatedUsers)
+
+    res.json({ message: '회원탈퇴가 완료되었습니다.' });
 });
 
 
