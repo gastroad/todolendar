@@ -3,6 +3,7 @@ const fs = require('fs');
 const app = express();
 const PORT = 9000;
 const { v4: uuidv4 } = require('uuid');
+const bodyParser = require('body-parser');
 
 const dataFilePath = './data.json';
 const userFilePath = './user.json'
@@ -26,6 +27,7 @@ function saveUser(data) {
     const json = JSON.stringify(data);
     fs.writeFileSync(userFilePath, json);
 }
+app.use(bodyParser.json());
 
 app.get('/api/todolist', (req, res) => {
     const year = req.query.year;
@@ -60,7 +62,6 @@ app.get('/api/todolist', (req, res) => {
 
 app.post('/api/todolist', (req, res) => {
     const { text, completed, date } = req.body;
-
     const data = loadData();
     const newTodo = {
         id: uuidv4(),
