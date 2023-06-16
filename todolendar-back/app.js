@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const app = express();
 const PORT = 9000;
+const { v4: uuidv4 } = require('uuid');
 
 const dataFilePath = './data.json';
 
@@ -51,7 +52,7 @@ app.post('/api/todolist', (req, res) => {
 
     const data = loadData();
     const newTodo = {
-        id: data.length + 1,
+        id: uuidv4(),
         text,
         completed,
         date

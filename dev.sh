@@ -29,7 +29,7 @@ do
 
             cd todolendar-back
             npm install
-            node app.js &
+            nodemon app.js &
             server1_pid=$!
             cd ..
 
@@ -43,7 +43,7 @@ do
             echo "todolendar-dev 실행"
 
             cd todolendar-back
-            node app.js &
+            nodemon app.js &
             server1_pid=$!
             cd ..
 
