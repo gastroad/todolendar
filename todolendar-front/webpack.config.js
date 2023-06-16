@@ -70,6 +70,9 @@ module.exports = {
         port: 80,
         compress: true,
         historyApiFallback: true,
+        proxy: {
+            '/api': 'http://localhost:9000',
+        },
     },
     plugins: [
         new CaseSensitivePathsPlugin(),
