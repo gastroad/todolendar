@@ -3,17 +3,17 @@ import { DateTime } from 'luxon';
 import TodoListModal, { TodoListModalProps } from './TodoListModal';
 
 const meta: Meta<TodoListModalProps> = {
-    title: 'components/organisms/TodoListModal',
-    component: TodoListModal,
+  title: 'components/organisms/TodoListModal',
+  component: TodoListModal,
 };
 export default meta;
 
 type Story = StoryObj<TodoListModalProps>;
 
 export const Default: Story = {
-    args: {
-        currentDate: DateTime.now(),
-        openModal: () => { },
-        closeModal: () => { }
-    },
+  args: {
+    currentDate: DateTime.now(),
+    openModal: () => {},
+    closeModal: () => {},
+  },
 };

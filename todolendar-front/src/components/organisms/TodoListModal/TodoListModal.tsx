@@ -22,7 +22,12 @@ const TodoListModal: FC<TodoListModalProps> = ({
   return (
     <div className="modal-wrapper">
       <div className="modal-content">
-        <img alt="modal-close" src={closeURL} className="modal-close" onClick={closeModal} />
+        <img
+          alt="modal-close"
+          src={closeURL}
+          className="modal-close"
+          onClick={closeModal}
+        />
         <TodoList currentDate={currentDate} initialTodos={todos} />
       </div>
     </div>

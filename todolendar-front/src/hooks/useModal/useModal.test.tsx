@@ -7,7 +7,11 @@ describe('useModal', () => {
     return (
       <div>
         <button onClick={openModal}>Open Modal</button>
-        {isOpen && <div className="modal-content" data-testid="modal-content">Modal Content</div>}
+        {isOpen && (
+          <div className="modal-content" data-testid="modal-content">
+            Modal Content
+          </div>
+        )}
         <button onClick={closeModal}>Close Modal</button>
       </div>
     );
@@ -27,7 +31,7 @@ describe('useModal', () => {
     // 확인필요
     fireEvent.click(getByText('Open Modal'));
     expect(queryByTestId('modal-content')).toBeInTheDocument();
-    fireEvent.keyDown(document, { key: 'Escape' })
+    fireEvent.keyDown(document, { key: 'Escape' });
     expect(queryByTestId('modal-content')).toBeNull();
   });
 

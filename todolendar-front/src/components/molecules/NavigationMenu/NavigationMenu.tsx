@@ -17,12 +17,19 @@ const NavigationMenu: FC = () => {
         {NavigationMenuList.map(({ link, label }) => {
           return (
             <li key={link}>
-              <Link className={`${Boolean(location.pathname.includes(link)) && "active"}`} to={link}>{label}</Link>
+              <Link
+                className={`${
+                  Boolean(location.pathname.includes(link)) && 'active'
+                }`}
+                to={link}
+              >
+                {label}
+              </Link>
             </li>
           );
         })}
       </ul>
-    </nav >
+    </nav>
   );
 };
 export default NavigationMenu;

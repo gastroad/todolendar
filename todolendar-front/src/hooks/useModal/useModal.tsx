@@ -16,7 +16,7 @@ const useModal = (): {
     };
 
     const bindEscapeToClose = (e: KeyboardEvent) => {
-      console.log(e.code)
+      console.log(e.code);
       if (e.code === 'Escape') {
         closeModal();
       }
