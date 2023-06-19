@@ -4,6 +4,7 @@ import Logo from '@atoms/Logo';
 import NavigationMenu from '@molecules/NavigationMenu';
 import './Header.scss';
 
+export interface HeaderProps {}
 const Header: FC = () => {
   return (
     <header id="header" data-testid="header">

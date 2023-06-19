@@ -1,13 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
-import CalendarCell from './CalendarCell';
 import { DateTime } from 'luxon';
 
-const meta: Meta<typeof CalendarCell> = {
+import CalendarCell, { CalendarCellProps } from './CalendarCell';
+
+const meta: Meta<CalendarCellProps> = {
   title: 'components/atoms/CalendarCell',
   component: CalendarCell,
 };
 export default meta;
-type Story = StoryObj<typeof CalendarCell>;
+type Story = StoryObj<CalendarCellProps>;
 
 export const Default: Story = {
   args: {

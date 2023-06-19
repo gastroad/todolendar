@@ -6,7 +6,7 @@ import EmptyCalendarCell from '@atoms/EmptyCalendarCell';
 
 import './CalendarBody.scss';
 
-interface CalendarBodyProps {
+export interface CalendarBodyProps {
   currentDate: DateTime;
   handleDateSelect: (date: DateTime) => void;
 }

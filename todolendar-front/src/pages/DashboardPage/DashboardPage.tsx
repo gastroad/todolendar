@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import DashboardTemplate from '@templates/DashboardTemplate';
 
-const DashboardPage: FC = () => {
+export interface DashboardPageProps {}
+const DashboardPage: FC<DashboardPageProps> = () => {
   return (
     <>
       <DashboardTemplate />

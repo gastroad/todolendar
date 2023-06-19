@@ -1,15 +1,15 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { DateTime } from 'luxon';
 
-import CalendarBody from './CalendarBody';
+import CalendarBody, { CalendarBodyProps } from './CalendarBody';
 
-const meta: Meta<typeof CalendarBody> = {
+const meta: Meta<CalendarBodyProps> = {
   title: 'components/molecules/CalendarBody',
   component: CalendarBody,
 };
 export default meta;
 
-type Story = StoryObj<typeof CalendarBody>;
+type Story = StoryObj<CalendarBodyProps>;
 export const Default: Story = {
   args: {
     currentDate: DateTime.local(2023, 1, 15),

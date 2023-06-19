@@ -1,10 +1,10 @@
 import { FC } from 'react';
 
-export interface Props {
+export interface FooterEmailProps {
   email: string;
 }
 
-const FooterEmail: FC<Props> = ({ email }) => {
+const FooterEmail: FC<FooterEmailProps> = ({ email }) => {
   return (
     <div className="footer-email">
       <span>Email:</span>

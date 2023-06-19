@@ -1,6 +1,8 @@
 import { FC } from 'react';
 
-const LoginPage: FC = () => {
+export interface LoginPageProps {}
+
+const LoginPage: FC<LoginPageProps> = () => {
   return <>LoginPage</>;
 };
 

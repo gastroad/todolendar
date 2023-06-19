@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import FooterEmail, { Props } from './FooterEmail';
+import FooterEmail, { FooterEmailProps } from './FooterEmail';
 
 test('renders FooterEmail component', () => {
-  const props: Props = {
+  const props: FooterEmailProps = {
     email: 'test@test.com',
   };
   render(<FooterEmail {...props} />);

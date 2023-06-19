@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
-import CalendarHeader from './CalendarHeader';
+import CalendarHeader, { CalendarHeaderProps } from './CalendarHeader';
 
-const meta: Meta<typeof CalendarHeader> = {
+const meta: Meta<CalendarHeaderProps> = {
   title: 'components/molecules/CalendarHeader',
   component: CalendarHeader,
 };
 export default meta;
 
-type Story = StoryObj<typeof CalendarHeader>;
+type Story = StoryObj<CalendarHeaderProps>;
 
 export const Default: Story = {
   args: {

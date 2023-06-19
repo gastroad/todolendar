@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 import './NavigationMenu.scss';
 import { useLocation } from 'react-router-dom';
 
+export interface NavigationMenuProps {}
 export const NavigationMenuList: { link: string; label: string }[] = [
   { link: 'dashbaord', label: 'DashBaord' },
   { link: 'planner', label: 'Planner' },
 ];
 
-
-const NavigationMenu: FC = () => {
+const NavigationMenu: FC<NavigationMenuProps> = () => {
   const location = useLocation();
-
   return (
     <nav id="nav" data-testid="nav">
       <ul>

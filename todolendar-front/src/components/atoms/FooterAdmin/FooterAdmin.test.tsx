@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import FooterAdmin, { Props } from './FooterAdmin';
+import FooterAdmin, { FooterAdminProps } from './FooterAdmin';
 
 test('renders FooterAdmin component', () => {
-  const props: Props = {
+  const props: FooterAdminProps = {
     adminName: '홍길동',
   };
 

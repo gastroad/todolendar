@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import './EmptyCalendarCell.scss';
 
-const EmptyCalendarCell: FC = () => {
+export interface EmptyCalendarCellProps {}
+const EmptyCalendarCell: FC<EmptyCalendarCellProps> = () => {
   return <div className="empty-calenar-cell" />;
 };
 

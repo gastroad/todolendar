@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import DashboardPage from './DashboardPage';
+import DashboardPage, { DashboardPageProps } from './DashboardPage';
 
-const meta: Meta<typeof DashboardPage> = {
+const meta: Meta<DashboardPageProps> = {
   title: 'pages/DashboardPage',
   component: DashboardPage,
 };
 export default meta;
 
-type Story = StoryObj<typeof DashboardPage>;
+type Story = StoryObj<DashboardPageProps>;
 
 export const Default: Story = {};

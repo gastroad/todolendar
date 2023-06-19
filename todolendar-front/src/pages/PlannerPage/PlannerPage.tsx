@@ -3,7 +3,9 @@ import { DateTime } from 'luxon';
 import PlannerTemplate from '@src/templates/PlannerTemplate';
 import useModal from '@src/hooks/useModal/useModal';
 
-const PlannerPage: FC = () => {
+export interface PlannerPageProps {}
+
+const PlannerPage: FC<PlannerPageProps> = () => {
   const [currentDate, setCurrentDate] = useState(DateTime.now());
   const { isOpen, openModal, closeModal } = useModal();
 

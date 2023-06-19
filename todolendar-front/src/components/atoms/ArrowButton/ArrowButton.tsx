@@ -3,7 +3,7 @@ import LeftArrowURL from '../../../assets/images/left.png';
 import RightArrowURL from '../../../assets/images/right.png';
 import './ArrowButton.scss';
 
-interface ArrowButtonProps {
+export interface ArrowButtonProps {
   onClick: () => void;
   direction: 'left' | 'right';
   name: string;

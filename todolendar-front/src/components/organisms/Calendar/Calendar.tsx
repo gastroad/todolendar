@@ -6,7 +6,7 @@ import CalendarBody from '@molecules/CalendarBody';
 
 import './Calendar.scss';
 
-interface CalendarProps {
+export interface CalendarProps {
   onDateSelect: (date: DateTime) => void;
 }
 

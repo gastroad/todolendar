@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import './Button.scss';
 
-interface ButtonProps {
+export interface ButtonProps {
   onClick: () => void;
   label: string;
   type: 'primary' | 'secondary' | 'tertiary';

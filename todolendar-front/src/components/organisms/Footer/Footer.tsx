@@ -5,12 +5,12 @@ import FooterAdmin from '@atoms/FooterAdmin';
 
 import './Footer.scss';
 
-interface Props {
+export interface FooterProps {
   email: string;
   adminName: string;
 }
 
-const Footer: FC<Props> = ({ email, adminName }) => {
+const Footer: FC<FooterProps> = ({ email, adminName }) => {
   return (
     <footer id="footer" data-testid="footer">
       <FooterEmail email={email} />

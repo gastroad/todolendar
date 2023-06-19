@@ -1,14 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import FooterAdmin from './FooterAdmin';
+import FooterAdmin, { FooterAdminProps } from './FooterAdmin';
 
-const meta: Meta<typeof FooterAdmin> = {
+const meta: Meta<FooterAdminProps> = {
   title: 'components/atoms/FooterAdmin',
   component: FooterAdmin,
 };
 export default meta;
 
-type Story = StoryObj<typeof FooterAdmin>;
+type Story = StoryObj<FooterAdminProps>;
 
 export const Default: Story = {
   args: {

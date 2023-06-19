@@ -4,7 +4,7 @@ import Button from '@atoms/Button';
 
 import './CalendarHeader.scss';
 
-interface CalendarHeaderProps {
+export interface CalendarHeaderProps {
   handlePrevMonth: () => void;
   handleNextMonth: () => void;
   handleThisMonth: () => void;
