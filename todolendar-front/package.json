@@ -14,6 +14,7 @@
   "author": "gastroad",
   "license": "MIT",
   "dependencies": {
+    "@tanstack/react-query": "^4.29.14",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
     "core-js": "^3.30.2",
@@ -22,6 +23,7 @@
     "react-dom": "^18.2.0",
     "react-router": "^6.11.2",
     "react-router-dom": "^6.11.2",
+    "recoil": "^0.7.7",
     "regenerator-runtime": "^0.13.11"
   },
   "devDependencies": {
