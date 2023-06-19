@@ -1,9 +1,9 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate } from 'react-router-dom';
 
 import LayoutTemplate from '@templates/LayoutTemplate';
 
 import DashboardPage from '@pages/DashboardPage';
-import TodoLendarPage from '@pages/TodolendarPage';
+import PlannerPage from '@src/pages/PlannerPage';
 import LoginPage from '@pages/LoginPage';
 
 const router = createBrowserRouter([
@@ -16,8 +16,12 @@ const router = createBrowserRouter([
         element: <DashboardPage />,
       },
       {
-        path: 'todolendar',
-        element: <TodoLendarPage />,
+        path: 'planner',
+        element: <PlannerPage />,
+      },
+      {
+        path: '*',
+        element: <Navigate to="/dashbaord" replace />,
       },
     ],
   },

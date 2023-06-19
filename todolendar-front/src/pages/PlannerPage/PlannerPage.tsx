@@ -1,9 +1,9 @@
 import { FC, useState } from 'react';
 import { DateTime } from 'luxon';
-import TodolendarTemplate from '@templates/TodolendarTemplate';
+import PlannerTemplate from '@src/templates/PlannerTemplate';
 import useModal from '@src/hooks/useModal/useModal';
 
-const TodolendarPage: FC = () => {
+const PlannerPage: FC = () => {
   const [currentDate, setCurrentDate] = useState(DateTime.now());
   const { isOpen, openModal, closeModal } = useModal();
 
@@ -14,7 +14,7 @@ const TodolendarPage: FC = () => {
 
   return (
     <>
-      <TodolendarTemplate
+      <PlannerTemplate
         currentDate={currentDate}
         setCurrentDate={setCurrentDate}
         todos={[]}
@@ -27,4 +27,4 @@ const TodolendarPage: FC = () => {
   );
 };
 
-export default TodolendarPage;
+export default PlannerPage;

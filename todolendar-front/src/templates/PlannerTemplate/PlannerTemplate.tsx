@@ -7,9 +7,9 @@ import TodoListModal from '@organisms/TodoListModal';
 import SectionTitle from '@atoms/SectionTitle';
 import type { Todo } from '@src/types/todoList';
 
-import './TodolendarTemplate.scss';
+import './PlannerTemplate.scss';
 
-interface TodolendarTemplateProps {
+interface PlannerTemplateProps {
   currentDate: DateTime;
   setCurrentDate: (currentDate: DateTime) => void;
   todos: Todo[];
@@ -19,7 +19,7 @@ interface TodolendarTemplateProps {
   closeModal: () => void;
 }
 
-const TodolendarTemplate: FC<TodolendarTemplateProps> = ({
+const PlannerTemplate: FC<PlannerTemplateProps> = ({
   currentDate,
   todos = [],
   onDateSelect,
@@ -49,4 +49,4 @@ const TodolendarTemplate: FC<TodolendarTemplateProps> = ({
   );
 };
 
-export default TodolendarTemplate;
+export default PlannerTemplate;

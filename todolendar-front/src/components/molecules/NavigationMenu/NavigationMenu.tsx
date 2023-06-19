@@ -5,8 +5,9 @@ import { useLocation } from 'react-router-dom';
 
 export const NavigationMenuList: { link: string; label: string }[] = [
   { link: 'dashbaord', label: 'DashBaord' },
-  { link: 'todolendar', label: 'TodoLendar' },
+  { link: 'planner', label: 'Planner' },
 ];
+
 
 const NavigationMenu: FC = () => {
   const location = useLocation();
