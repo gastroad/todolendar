@@ -80,7 +80,7 @@ app.put('/api/todolist/:id', (req, res) => {
     const { text, completed, date } = req.body;
 
     const data = loadData();
-    const todo = data.find(item => item.id === parseInt(id));
+    const todo = data.find(item => item.id === id);
     todo.text = text;
     todo.completed = completed;
     todo.date = date;
@@ -92,11 +92,9 @@ app.put('/api/todolist/:id', (req, res) => {
 app.delete('/api/todolist/:id', (req, res) => {
     const id = req.params.id;
     const data = loadData();
-
-    const index = data.findIndex(item => item.id === parseInt(id));
+    const index = data.findIndex(item => item.id === id);
     data.splice(index, 1);
     saveData(data);
-
     res.json({ message: 'Todo item deleted successfully' });
 });
 
