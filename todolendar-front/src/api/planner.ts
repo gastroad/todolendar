@@ -31,3 +31,27 @@ export const httpGetTodos = async ({
   });
   return data;
 };
+
+export const httpPutTodo = async ({
+  text,
+  completed,
+  date,
+  id
+}: {
+  text: string;
+  completed: boolean;
+  date: string;
+  id: string
+}) => {
+  const { data } = await axios.put(`/api/todolist/${id}`, {
+    text: text,
+    completed: completed,
+    date: date,
+  });
+  return data;
+};
+
+export const httpDeleteTodo = async ({ id }: { id: string }) => {
+  const { data } = await axios.delete(`/api/todolist/${id}`);
+  return data;
+};
