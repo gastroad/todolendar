@@ -23,3 +23,15 @@ sh dev.sh
 ```
 
 위의 명령어는 `dev.sh` 스크립트 파일을 실행하여 개발 서버를 시작합니다.
+
+
+---
+
+### todolendar-back
+
+todolendar-front를 개발하기 위해 Node로 작성된 웹 서버입니다.
+mock 데이터를 crud 하기 위한 웹 서버이므로 다소 오류가 있을 수 있습니다.
+
+### todolendar-front
+
+React, TypeScript 를 사용해서 개발되었습니다.

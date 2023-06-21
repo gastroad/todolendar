@@ -4,12 +4,12 @@ cleanup() {
     echo "스크립트를 종료합니다."
 
     if [[ -n $server1_pid ]]; then
-        echo "첫 번째 웹 서버를 종료합니다."
+        echo "todolendar-back 서버를 종료합니다."
         kill $server1_pid
     fi
 
     if [[ -n $server2_pid ]]; then
-        echo "두 번째 웹 서버를 종료합니다."
+        echo "todolendar-front 서버를 종료합니다."
         kill $server2_pid
     fi
 
