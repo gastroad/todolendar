@@ -1,0 +1,121 @@
+// @import "../../../assets/styles/variables.scss";
+
+// .calendar-cell {
+//     flex-basis: calc(100% / 7);
+//     height: 0;
+//     padding-bottom: calc(100% / 7);
+//     box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+//     overflow: hidden;
+//     span {
+//         display: inline-block;
+//         padding: 2px;
+//     }
+//     &.today {
+//         span {
+//             background-color: $primary-color;
+//             color: white;
+//             border-radius: 100%;
+//             font-weight: bold;
+//         }
+//     }
+//     ul {
+//         li {
+// font-size: 0.8rem;
+// letter-spacing: -0.5px;
+// padding: 0.25rem;
+// margin-bottom: 0.25rem;
+// border-radius: 5px;
+// color: white;
+// text-overflow: ellipsis;
+// overflow: hidden;
+// white-space: nowrap;
+// &.one {
+//     background-color: #87ceeb;
+// }
+// &.two {
+//     background-color: #87ceeb;
+// }
+// &.three {
+//     background-color: #c8a2c8;
+// }
+// &.four {
+//     background-color: #039be5;
+// }
+// &.five {
+//     background-color: #ffc0cb;
+// }
+// &.six {
+//     background-color: #32cd32;
+// }
+// &.seven {
+//     background-color: #ff7f50;
+// }
+// &.eight {
+//     background-color: #708090;
+// }
+//         }
+//     }
+// }
+.calendar-cell {
+    position: relative;
+    padding: 10px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    span {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        flex: 1;
+        overflow-y: auto;
+        li {
+            background-color: #f0f0f0;
+            font-size: 0.8rem;
+            letter-spacing: -0.5px;
+            padding: 0.25rem;
+            margin-bottom: 0.25rem;
+            border-radius: 5px;
+            color: white;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            &.one {
+                background-color: #87ceeb;
+            }
+            &.two {
+                background-color: #87ceeb;
+            }
+            &.three {
+                background-color: #c8a2c8;
+            }
+            &.four {
+                background-color: #039be5;
+            }
+            &.five {
+                background-color: #ffc0cb;
+            }
+            &.six {
+                background-color: #32cd32;
+            }
+            &.seven {
+                background-color: #ff7f50;
+            }
+            &.eight {
+                background-color: #708090;
+            }
+        }
+    }
+}
+// .current-date {
+//     background-color: yellow;
+// }
+.today {
+    background-color: lightgreen;
+}

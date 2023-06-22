@@ -4,7 +4,7 @@ import { DateTime } from 'luxon';
 import CalendarCell, { CalendarCellProps } from './CalendarCell';
 
 const meta: Meta<CalendarCellProps> = {
-  title: 'components/atoms/CalendarCell',
+  title: 'components/molecules/CalendarCell',
   component: CalendarCell,
 };
 export default meta;
@@ -25,5 +25,6 @@ export const Today: Story = {
     isCurrentDate: true,
     handleDateSelect: (date) => {},
     date: DateTime.local(2023, 1, 15),
+    currentDateTodos: [],
   },
 };

@@ -3,8 +3,18 @@ import TodoList, { TodoListProps } from './TodoList';
 import { DateTime } from 'luxon';
 
 const initialTodos = [
-  { id: 1, text: 'Task 1', completed: false },
-  { id: 2, text: 'Task 2', completed: true },
+  {
+    id: '1',
+    text: 'Task 1',
+    completed: false,
+    date: DateTime.now().toFormat('yyyy MM/dd'),
+  },
+  {
+    id: '2',
+    text: 'Task 2',
+    completed: true,
+    date: DateTime.now().toFormat('yyyy MM/dd'),
+  },
 ];
 
 const meta: Meta<TodoListProps> = {

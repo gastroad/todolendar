@@ -1,11 +1,13 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import { DateTime } from 'luxon';
 import TodoItem, { TodoItemProps } from './TodoItem';
 
 describe('TodoItem', () => {
   const todo: TodoItemProps['todo'] = {
-    id: 1,
+    id: '1',
     text: 'Task 1',
     completed: false,
+    date: DateTime.now().toFormat('yyyy MM/dd'),
   };
 
   const toggleTodoMock = jest.fn();
@@ -29,12 +31,12 @@ describe('TodoItem', () => {
   it('calls toggleTodo when clicked', () => {
     const todoTextElement = screen.getByText('Task 1');
     fireEvent.click(todoTextElement);
-    expect(toggleTodoMock).toHaveBeenCalledWith(1);
+    expect(toggleTodoMock).toHaveBeenCalledWith('1');
   });
 
   it('calls deleteTodo when delete button is clicked', () => {
     const deleteButton = screen.getByText('Delete');
     fireEvent.click(deleteButton);
-    expect(deleteTodoMock).toHaveBeenCalledWith(1);
+    expect(deleteTodoMock).toHaveBeenCalledWith('1');
   });
 });

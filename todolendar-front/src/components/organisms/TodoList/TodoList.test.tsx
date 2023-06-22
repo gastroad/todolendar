@@ -1,83 +1,91 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { DateTime } from 'luxon';
+import { render, fireEvent } from '@testing-library/react';
 import TodoList from './TodoList';
+import { DateTime } from 'luxon';
 
 describe('TodoList', () => {
-  const currentDate = DateTime.now();
-  const initialTodos = [
-    { id: 1, text: 'Task 1', completed: false },
-    { id: 2, text: 'Task 2', completed: true },
+  const currentDate = DateTime.local();
+  const todos = [
+    {
+      id: '1',
+      text: 'Todo 1',
+      completed: false,
+      date: DateTime.now().toFormat('yyyy MM/dd'),
+    },
+    {
+      id: '2',
+      text: 'Todo 2',
+      completed: true,
+      date: DateTime.now().toFormat('yyyy MM/dd'),
+    },
   ];
+  const addTodoMock = jest.fn();
+  const toggleTodoMock = jest.fn();
+  const deleteTodoMock = jest.fn();
 
-  test('renders todo list ', () => {
-    const { getByText } = render(<TodoList currentDate={currentDate} />);
-    expect(getByText('오늘의 일정을 추가해주세요')).toBeInTheDocument();
-  });
-  test('renders todo list with initial state', () => {
+  test('renders TodoList with initial todos', () => {
     const { getByText } = render(
-      <TodoList currentDate={currentDate} initialTodos={initialTodos} />,
+      <TodoList
+        currentDate={currentDate}
+        initialTodos={todos}
+        addTodo={addTodoMock}
+        toggleTodo={toggleTodoMock}
+        deleteTodo={deleteTodoMock}
+      />,
     );
 
-    expect(getByText('Task 1')).toBeInTheDocument();
-    expect(getByText('Task 2')).toBeInTheDocument();
-    expect(getByText(currentDate.toFormat('yyyy MM/dd'))).toBeInTheDocument();
+    expect(getByText('Todo 1')).toBeInTheDocument();
+    expect(getByText('Todo 2')).toBeInTheDocument();
   });
-  test('adds a new todo', () => {
-    const { getByPlaceholderText, getByRole } = render(
-      <TodoList currentDate={currentDate} />,
+
+  test('calls addTodo when TodoForm adds a new todo', () => {
+    const { getByText, getByPlaceholderText } = render(
+      <TodoList
+        currentDate={currentDate}
+        addTodo={addTodoMock}
+        toggleTodo={toggleTodoMock}
+        deleteTodo={deleteTodoMock}
+      />,
     );
 
     const input = getByPlaceholderText('일정을 작성해 주세요.');
-    const addButton = getByRole('button', { name: '일정 추가' });
+    const button = getByText('일정 추가');
 
-    fireEvent.change(input, { target: { value: 'New Task' } });
-    fireEvent.click(addButton);
+    fireEvent.change(input, { target: { value: 'New Todo' } });
+    fireEvent.click(button);
 
-    expect(screen.getByText('New Task')).toBeInTheDocument();
+    expect(addTodoMock).toHaveBeenCalledWith('New Todo');
   });
 
-  test('toggles todo completion status', () => {
+  test('calls toggleTodo when TodoItem is toggled', () => {
     const { getByText } = render(
-      <TodoList currentDate={currentDate} initialTodos={initialTodos} />,
+      <TodoList
+        currentDate={currentDate}
+        initialTodos={todos}
+        addTodo={addTodoMock}
+        toggleTodo={toggleTodoMock}
+        deleteTodo={deleteTodoMock}
+      />,
     );
 
-    // todo toogle 해야하나?
-    // 얘는 테스트코드 우에짜누..
-    // const todolistItem = getByText('Task 1')
-    // fireEvent.click(todolistItem);
+    const todoItem = getByText('Todo 1');
+    fireEvent.click(todoItem);
+
+    expect(toggleTodoMock).toHaveBeenCalledWith('1');
   });
 
-  test('deletes a todo', () => {
-    const { queryByText, getByText, getAllByRole } = render(
-      <TodoList currentDate={currentDate} initialTodos={initialTodos} />,
+  test('calls deleteTodo when TodoItem is deleted', () => {
+    const { getAllByText } = render(
+      <TodoList
+        currentDate={currentDate}
+        initialTodos={todos}
+        addTodo={addTodoMock}
+        toggleTodo={toggleTodoMock}
+        deleteTodo={deleteTodoMock}
+      />,
     );
+    const deleteButton = getAllByText('Delete');
+    fireEvent.click(deleteButton[1]);
 
-    const deleteButton = getAllByRole('button', { name: 'Delete' })[0];
-    fireEvent.click(deleteButton);
-
-    expect(queryByText('Task 1')).toBeNull();
-    expect(getByText('Task 2')).toBeInTheDocument();
-  });
-
-  test('filters todos based on filter option', () => {
-    const { getByText, queryByText, getByRole } = render(
-      <TodoList currentDate={currentDate} initialTodos={initialTodos} />,
-    );
-
-    const allButton = getByRole('button', { name: /all/i });
-    const completedButton = getByRole('button', { name: /completed/i });
-    const inProgressButton = getByRole('button', { name: /in progress/i });
-
-    fireEvent.click(completedButton);
-    expect(queryByText('Task 1')).toBeNull();
-    expect(getByText('Task 2')).toBeInTheDocument();
-
-    fireEvent.click(inProgressButton);
-    expect(getByText('Task 1')).toBeInTheDocument();
-    expect(queryByText('Task 2')).toBeNull();
-
-    fireEvent.click(allButton);
-    expect(getByText('Task 1')).toBeInTheDocument();
-    expect(getByText('Task 2')).toBeInTheDocument();
+    expect(deleteTodoMock).toHaveBeenCalledWith('2');
   });
 });

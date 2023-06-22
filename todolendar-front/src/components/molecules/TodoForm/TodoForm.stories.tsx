@@ -11,8 +11,6 @@ type Story = StoryObj<TodoFormProps>;
 
 export const Default: Story = {
   args: {
-    inputText: '',
-    setInputText: () => {},
-    addTodo: () => {},
+    addTodo: (text: string) => {},
   },
 };

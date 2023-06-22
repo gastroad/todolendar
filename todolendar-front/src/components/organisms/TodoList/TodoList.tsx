@@ -12,47 +12,23 @@ import './TodoList.scss';
 export interface TodoListProps {
   currentDate: DateTime;
   initialTodos?: Todo[];
+  addTodo: (inputText: string) => void;
+  toggleTodo: (id: string) => void;
+  deleteTodo: (id: string) => void;
 }
 
-const TodoList: FC<TodoListProps> = ({ currentDate, initialTodos = [] }) => {
-  const [todos, setTodos] = useState<Todo[]>(initialTodos);
-  const [inputText, setInputText] = useState('');
+const TodoList: FC<TodoListProps> = ({
+  currentDate,
+  initialTodos = [],
+  addTodo,
+  toggleTodo,
+  deleteTodo,
+}) => {
+  const todos = initialTodos;
   const [filter, setFilter] = useState<TodoFilterOption>('ALL');
-
-  const addTodo = () => {
-    if (inputText.trim() !== '') {
-      const newTodo: Todo = {
-        id: Date.now(),
-        text: inputText,
-        completed: false,
-      };
-      setTodos([...todos, newTodo]);
-      setInputText('');
-    }
-  };
-
-  const toggleTodo = (id: number) => {
-    const updatedTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        return {
-          ...todo,
-          completed: !todo.completed,
-        };
-      }
-      return todo;
-    });
-    setTodos(updatedTodos);
-  };
-
-  const deleteTodo = (id: number) => {
-    const updatedTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(updatedTodos);
-  };
-
   const filterTodos = (filter: TodoFilterOption) => {
     setFilter(filter);
   };
-
   const filteredTodos = useMemo(() => {
     switch (filter) {
       case 'COMPLETED':
@@ -84,11 +60,7 @@ const TodoList: FC<TodoListProps> = ({ currentDate, initialTodos = [] }) => {
           />
         ))}
       </ul>
-      <TodoForm
-        inputText={inputText}
-        setInputText={setInputText}
-        addTodo={addTodo}
-      />
+      <TodoForm addTodo={addTodo} />
     </div>
   );
 };

@@ -36,12 +36,12 @@ export const httpPutTodo = async ({
   text,
   completed,
   date,
-  id
+  id,
 }: {
   text: string;
   completed: boolean;
   date: string;
-  id: string
+  id: string;
 }) => {
   const { data } = await axios.put(`/api/todolist/${id}`, {
     text: text,

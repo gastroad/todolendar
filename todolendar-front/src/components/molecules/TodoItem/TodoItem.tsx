@@ -6,8 +6,8 @@ import './TodoItem.scss';
 
 export interface TodoItemProps {
   todo: Todo;
-  toggleTodo: (id: number) => void;
-  deleteTodo: (id: number) => void;
+  toggleTodo: (id: string) => void;
+  deleteTodo: (id: string) => void;
 }
 
 const TodoItem: FC<TodoItemProps> = ({ todo, toggleTodo, deleteTodo }) => {

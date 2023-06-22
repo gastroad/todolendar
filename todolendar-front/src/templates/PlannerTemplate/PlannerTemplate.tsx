@@ -9,7 +9,7 @@ import type { Todo } from '@src/types/todoList';
 
 import './PlannerTemplate.scss';
 
-interface PlannerTemplateProps {
+export interface PlannerTemplateProps {
   currentDate: DateTime;
   setCurrentDate: (currentDate: DateTime) => void;
   todos: Todo[];
@@ -27,19 +27,22 @@ const PlannerTemplate: FC<PlannerTemplateProps> = ({
   openModal,
   closeModal,
 }) => {
+  const selectedDateTodos = todos.filter(
+    (todo) => todo.date === currentDate.toFormat('yyyy MM/dd'),
+  );
   return (
     <>
       <section className="section">
         <SectionTitle title="Planner" />
         <div className="calendar-wrapper">
-          <Calendar onDateSelect={onDateSelect} />
+          <Calendar onDateSelect={onDateSelect} todos={todos} height="768px" />
         </div>
       </section>
       {isOpen &&
         createPortal(
           <TodoListModal
             currentDate={currentDate}
-            todos={todos}
+            todos={selectedDateTodos}
             openModal={openModal}
             closeModal={closeModal}
           />,

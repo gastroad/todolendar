@@ -7,10 +7,6 @@
     margin-bottom: 10px;
     transition-duration: 0.5s;
 
-    input[type="checkbox"] {
-        margin-right: 10px;
-    }
-
     span {
         flex-grow: 1;
         text-decoration: none;
@@ -19,7 +15,14 @@
         &:hover {
             opacity: 0.5;
         }
+        max-width: 50vw;
     }
+    @media (max-width: 768px) {
+        span {
+            max-width: initial;
+        }
+    }
+
     &.completed {
         span {
             text-decoration: line-through;

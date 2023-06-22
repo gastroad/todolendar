@@ -28,10 +28,9 @@ describe('useModal', () => {
 
   test('closes modal on escape key press', () => {
     const { getByText, queryByTestId } = render(<TestComponent />);
-    // 확인필요
     fireEvent.click(getByText('Open Modal'));
     expect(queryByTestId('modal-content')).toBeInTheDocument();
-    fireEvent.keyDown(document, { key: 'Escape' });
+    fireEvent.keyDown(window, { key: 'Escape' });
     expect(queryByTestId('modal-content')).toBeNull();
   });
 

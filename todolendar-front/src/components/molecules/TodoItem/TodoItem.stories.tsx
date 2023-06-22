@@ -1,10 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
+import { DateTime } from 'luxon';
 import TodoItem, { TodoItemProps } from './TodoItem';
 
 const todo: TodoItemProps['todo'] = {
-  id: 1,
+  id: '1',
   text: 'Task 1',
   completed: false,
+  date: DateTime.now().toFormat('yyyy MM/dd'),
 };
 
 const meta: Meta<TodoItemProps> = {

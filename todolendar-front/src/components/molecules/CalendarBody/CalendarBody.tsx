@@ -1,27 +1,35 @@
 import { FC } from 'react';
 import { DateTime } from 'luxon';
 
-import CalendarCell from '@atoms/CalendarCell';
+import CalendarCell from '@src/components/molecules/CalendarCell';
 import EmptyCalendarCell from '@atoms/EmptyCalendarCell';
 
 import './CalendarBody.scss';
+import { Todo } from '@src/types/todoList';
 
 export interface CalendarBodyProps {
   currentDate: DateTime;
   handleDateSelect: (date: DateTime) => void;
+  todos?: Todo[];
+  height: string;
 }
 
 const CalendarBody: FC<CalendarBodyProps> = ({
   currentDate,
   handleDateSelect,
+  todos = [],
+  height,
 }) => {
   const month = currentDate.month;
   const year = currentDate.year;
   const firstDayOfMonth = DateTime.local(year, month, 1).weekday;
   const daysInMonth = currentDate.daysInMonth!;
-
   return (
-    <div className="calendar-body" data-testid="calendar-body">
+    <div
+      className="calendar-body"
+      data-testid="calendar-body"
+      style={{ height: `calc(${height} - 36px - 0.5rem)` }}
+    >
       {Array.from({ length: firstDayOfMonth }).map((_, index) => {
         return <EmptyCalendarCell key={`empty-${index}`} />;
       })}
@@ -29,6 +37,9 @@ const CalendarBody: FC<CalendarBodyProps> = ({
         const dayOfMonth = index + 1;
         const date = DateTime.local(year, month, dayOfMonth);
         const isCurrentDate = date.hasSame(currentDate, 'day');
+        const currentDateTodos = todos.filter(
+          (todo) => todo.date === date.toFormat('yyyy MM/dd'),
+        );
         return (
           <CalendarCell
             dayOfMonth={dayOfMonth}
@@ -36,6 +47,7 @@ const CalendarBody: FC<CalendarBodyProps> = ({
             handleDateSelect={handleDateSelect}
             date={date}
             key={`day-${dayOfMonth}`}
+            currentDateTodos={currentDateTodos}
           />
         );
       })}
