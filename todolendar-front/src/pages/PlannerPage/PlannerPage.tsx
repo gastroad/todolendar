@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 import PlannerTemplate from '@src/templates/PlannerTemplate';
 import useModal from '@src/hooks/useModal/useModal';
@@ -21,9 +21,16 @@ const PlannerPage: FC<PlannerPageProps> = () => {
       }),
   });
 
+  useEffect(() => {
+    getTodosQuery.refetch();
+  }, [currentDate]);
+
   const onDateSelect = (date: DateTime) => {
     setCurrentDate(date);
     openModal();
+  };
+  const handleCurrentDate = (date: DateTime) => {
+    setCurrentDate(date);
   };
 
   if (getTodosQuery.isLoading) {
@@ -43,6 +50,7 @@ const PlannerPage: FC<PlannerPageProps> = () => {
         todos={getTodosQuery.data}
         onDateSelect={onDateSelect}
         isOpen={isOpen}
+        handleCurrentDate={handleCurrentDate}
         openModal={openModal}
         closeModal={closeModal}
       />

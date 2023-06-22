@@ -11,10 +11,16 @@ export interface CalendarProps {
   onDateSelect: (date: DateTime) => void;
   todos?: Todo[];
   height?: string;
+  currentDate: DateTime;
+  handleCurrentDate: (date: DateTime) => void;
 }
 
-const Calendar: FC<CalendarProps> = ({ onDateSelect, todos = [] }) => {
-  const [currentDate, setCurrentDate] = useState(DateTime.now());
+const Calendar: FC<CalendarProps> = ({
+  onDateSelect,
+  todos = [],
+  currentDate,
+  handleCurrentDate,
+}) => {
   const calendarRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
 
@@ -33,13 +39,13 @@ const Calendar: FC<CalendarProps> = ({ onDateSelect, todos = [] }) => {
     };
   }, []);
   const handlePrevMonth = () => {
-    setCurrentDate((prevDate) => prevDate.minus({ months: 1 }));
+    handleCurrentDate(currentDate.minus({ month: 1 }));
   };
   const handleNextMonth = () => {
-    setCurrentDate((prevDate) => prevDate.plus({ months: 1 }));
+    handleCurrentDate(currentDate.plus({ month: 1 }));
   };
   const handleThisMonth = () => {
-    setCurrentDate(DateTime.now());
+    handleCurrentDate(DateTime.now());
   };
   const handleDateSelect = (date: DateTime) => {
     onDateSelect(date);

@@ -14,6 +14,7 @@ export interface PlannerTemplateProps {
   setCurrentDate: (currentDate: DateTime) => void;
   todos: Todo[];
   onDateSelect: (currentDate: DateTime) => void;
+  handleCurrentDate: (currentDate: DateTime) => void;
   isOpen: boolean;
   openModal: () => void;
   closeModal: () => void;
@@ -26,6 +27,7 @@ const PlannerTemplate: FC<PlannerTemplateProps> = ({
   isOpen,
   openModal,
   closeModal,
+  handleCurrentDate,
 }) => {
   const selectedDateTodos = todos.filter(
     (todo) => todo.date === currentDate.toFormat('yyyy MM/dd'),
@@ -35,7 +37,13 @@ const PlannerTemplate: FC<PlannerTemplateProps> = ({
       <section className="section">
         <SectionTitle title="Planner" />
         <div className="calendar-wrapper">
-          <Calendar onDateSelect={onDateSelect} todos={todos} height="768px" />
+          <Calendar
+            onDateSelect={onDateSelect}
+            todos={todos}
+            height="768px"
+            handleCurrentDate={handleCurrentDate}
+            currentDate={currentDate}
+          />
         </div>
       </section>
       {isOpen &&
