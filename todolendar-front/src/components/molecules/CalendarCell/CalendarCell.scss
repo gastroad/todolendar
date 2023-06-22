@@ -107,7 +107,8 @@
             &.seven {
                 background-color: #ff7f50;
             }
-            &.eight {
+            &.completed {
+                text-decoration: line-through;
                 background-color: #708090;
             }
         }
