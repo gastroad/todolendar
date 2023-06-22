@@ -2,7 +2,7 @@
 
 ## 포트폴리오 개요
 
-"todolendar"는 todoList를 calendar를 통해 관리하는 서비스입니다.
+"todolendar"는 calendar를 통해 날짜별로 todoList를 관리하는 서비스입니다.
 
 ## 개발 서버 실행 방법
 
