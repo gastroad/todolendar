@@ -1,0 +1,17 @@
+.bubble-chart-wrapper,
+.bar-chart-wrapper,
+.half-pie-chart-wrapper {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    padding: 1rem;
+    margin-top: 1rem;
+    .recharts-wrapper {
+        margin: 0 auto;
+    }
+    h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: -1px;
+        margin-bottom: 1rem;
+    }
+}

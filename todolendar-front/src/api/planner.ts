@@ -24,7 +24,7 @@ export const httpGetTodos = async ({
   month,
 }: {
   year: string;
-  month: string;
+  month?: string;
 }): Promise<Todo[]> => {
   const { data } = await axios.get<Todo[]>(`/api/todolist`, {
     params: { year, month },
