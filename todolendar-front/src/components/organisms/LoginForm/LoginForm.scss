@@ -1,0 +1,30 @@
+.login-from {
+    min-width: 340px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    background-color: white;
+    padding: 1rem;
+    .logo-wrapper {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    .id-wrapper,
+    .password-wrapper {
+        input {
+            width: calc(100% - 1rem);
+            margin-bottom: 1rem;
+        }
+    }
+
+    .button-wrapper {
+        margin-bottom: 1rem;
+        .btn {
+            width: calc(100% - 1rem - 20px);
+            text-align: center;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        width: 100vh;
+    }
+}
