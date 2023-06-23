@@ -115,15 +115,16 @@ app.post('/api/signup', (req, res) => {
 
 app.post('/api/login', (req, res) => {
     const { username, password } = req.body;
-    const users = loadUser()
+    res.json({ message: '로그인이 완료되었습니다.' });
+    // const users = loadUser()
 
-    const user = users.find((u) => u.username === username && u.password === password);
+    // const user = users.find((u) => u.username === username && u.password === password);
 
-    if (!user) {
-        res.status(401).json({ message: '유효한 사용자 정보가 아닙니다.' });
-    } else {
-        res.json({ message: '로그인이 완료되었습니다.' });
-    }
+    // if (!user) {
+    //     res.status(401).json({ message: '유효한 사용자 정보가 아닙니다.' });
+    // } else {
+    //     res.json({ message: '로그인이 완료되었습니다.' });
+    // }
 });
 
 app.post('/api/logout', (req, res) => {
