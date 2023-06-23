@@ -4,8 +4,9 @@ import cx from 'classnames';
 
 import './CalendarCell.scss';
 import { Todo } from '@src/types/todoList';
+import CalendarCellItem from '@atoms/CalendarCellItem';
 
-const mapper = ['one', 'two', 'three', 'four', 'five', 'six', 'seven'];
+
 
 export interface CalendarCellProps {
   dayOfMonth: number;
@@ -35,15 +36,9 @@ const CalendarCell: FC<CalendarCellProps> = ({
     >
       <span>{dayOfMonth}</span>
       <ul>
-        {currentDateTodos.map((todo) => {
-
+        {currentDateTodos.map((todo, index) => {
           return (
-            <li
-              key={todo.id}
-              className={`${todo.completed ? "completed" : mapper[Math.floor(Math.random() * mapper.length)]}`}
-            >
-              {todo.text}
-            </li>
+            <CalendarCellItem todo={todo} key={`${index}-${todo.id}`} />
           );
         })}
       </ul>

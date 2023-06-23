@@ -1,0 +1,37 @@
+.calendar-cell-item {
+    background-color: #f0f0f0;
+    font-size: 0.8rem;
+    letter-spacing: -0.5px;
+    padding: 0.25rem;
+    margin-bottom: 0.25rem;
+    border-radius: 5px;
+    color: white;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    &.one {
+        background-color: #87ceeb;
+    }
+    &.two {
+        background-color: #87ceeb;
+    }
+    &.three {
+        background-color: #c8a2c8;
+    }
+    &.four {
+        background-color: #039be5;
+    }
+    &.five {
+        background-color: #ffc0cb;
+    }
+    &.six {
+        background-color: #32cd32;
+    }
+    &.seven {
+        background-color: #ff7f50;
+    }
+    &.completed {
+        text-decoration: line-through;
+        background-color: #708090;
+    }
+}
