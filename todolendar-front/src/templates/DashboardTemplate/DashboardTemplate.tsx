@@ -56,21 +56,23 @@ const DashboardTemplate: FC<DashboardTemplateProps> = ({ todos }) => {
     <>
       <section className="section">
         <SectionTitle title="DashBoard" />
-        <div className="bubble-chart-wrapper">
-          <h3>1년중 가장 바쁜달은?</h3>
-          <BubbleChart data={bubbleChartData} />
-          {/* 700 */}
-        </div>
-        <div className='chart-container'>
-          <div className="bar-chart-wrapper">
-            <h3>목표를 가장 잘 이룬 달은 언제인가요?</h3>
-            <BarChart data={barChartData} />
-            {/* 400 */}
+        <div className='content-wrapper'>
+          <div className="bubble-chart-wrapper">
+            <h3>1년중 가장 바쁜달은?</h3>
+            <BubbleChart data={bubbleChartData} />
+            {/* 700 */}
           </div>
-          <div className="half-pie-chart-wrapper">
-            <h3>올해 목표는 얼마나 달성되었나요?</h3>
-            <HalfPieChart data={halfPieChartData} width={260} />
-            {/* 260 */}
+          <div className='chart-container'>
+            <div className="bar-chart-wrapper">
+              <h3>목표를 가장 잘 이룬 달은 언제인가요?</h3>
+              <BarChart data={barChartData} />
+              {/* 400 */}
+            </div>
+            <div className="half-pie-chart-wrapper">
+              <h3>올해 목표는 얼마나 달성되었나요?</h3>
+              <HalfPieChart data={halfPieChartData} width={260} />
+              {/* 260 */}
+            </div>
           </div>
         </div>
       </section>

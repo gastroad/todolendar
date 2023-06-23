@@ -36,7 +36,7 @@ const PlannerTemplate: FC<PlannerTemplateProps> = ({
     <>
       <section className="section">
         <SectionTitle title="Planner" />
-        <div className="calendar-wrapper">
+        <div className="content-wrapper">
           <Calendar
             onDateSelect={onDateSelect}
             todos={todos}

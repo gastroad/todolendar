@@ -1,4 +1,10 @@
 section {
     margin-bottom: 100px;
     min-height: calc(100vh - 168px);
+    padding: 1.5rem 1rem;
+    .content-wrapper {
+        margin: 0 auto;
+        margin-top: 1rem;
+        max-width: 1024px;
+    }
 }
