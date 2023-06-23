@@ -7,14 +7,14 @@ export interface TextInputProps {
   placeholder?: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
-  type?: string
+  type?: string;
 }
 const TextInput: FC<TextInputProps> = ({
   value,
   placeholder = '',
   onChange,
   onKeyDown,
-  type = "text"
+  type = 'text',
 }) => {
   return (
     <input

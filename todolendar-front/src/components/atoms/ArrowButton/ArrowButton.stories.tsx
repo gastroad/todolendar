@@ -6,6 +6,7 @@ const meta: Meta<ArrowButtonProps> = {
   component: ArrowButton,
 };
 export default meta;
+
 type Story = StoryObj<ArrowButtonProps>;
 
 export const Default: Story = {

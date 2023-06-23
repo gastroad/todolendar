@@ -7,7 +7,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer
+  ResponsiveContainer,
 } from 'recharts';
 type BarChartDataType = {
   name: string;
@@ -18,17 +18,10 @@ type BarChartDataType = {
 export interface CustomBarChartProps {
   data: BarChartDataType[];
 }
-const CustomBarChart: FC<CustomBarChartProps> = ({
-  data,
-}) => {
+const CustomBarChart: FC<CustomBarChartProps> = ({ data }) => {
   return (
-    <ResponsiveContainer
-      minWidth={304}
-      minHeight={400}
-    >
-      <BarChart
-        data={data}
-      >
+    <ResponsiveContainer minWidth={304} minHeight={400}>
+      <BarChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" />
         <YAxis />
@@ -37,7 +30,7 @@ const CustomBarChart: FC<CustomBarChartProps> = ({
         <Bar dataKey="inProgress" stackId="a" fill="#82ca9d" />
         <Bar dataKey="completed" label="asd" stackId="a" fill="#8884d8" />
       </BarChart>
-    </ResponsiveContainer >
+    </ResponsiveContainer>
   );
 };
 

@@ -6,8 +6,6 @@ import './CalendarCell.scss';
 import { Todo } from '@src/types/todoList';
 import CalendarCellItem from '@atoms/CalendarCellItem';
 
-
-
 export interface CalendarCellProps {
   dayOfMonth: number;
   isCurrentDate: boolean;
@@ -37,9 +35,7 @@ const CalendarCell: FC<CalendarCellProps> = ({
       <span>{dayOfMonth}</span>
       <ul>
         {currentDateTodos.map((todo, index) => {
-          return (
-            <CalendarCellItem todo={todo} key={`${index}-${todo.id}`} />
-          );
+          return <CalendarCellItem todo={todo} key={`${index}-${todo.id}`} />;
         })}
       </ul>
     </div>

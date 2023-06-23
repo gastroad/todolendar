@@ -5,7 +5,7 @@ import HalfPieChart from '@organisms/HalfPieChart';
 import BubbleChart from '@organisms/BubbleChart';
 import { Todo } from '@src/types/todoList';
 
-import "./DashboardTemplate.scss"
+import './DashboardTemplate.scss';
 
 export interface DashboardTemplateProps {
   todos: Todo[];
@@ -56,13 +56,13 @@ const DashboardTemplate: FC<DashboardTemplateProps> = ({ todos }) => {
     <>
       <section className="section">
         <SectionTitle title="DashBoard" />
-        <div className='content-wrapper'>
+        <div className="content-wrapper">
           <div className="bubble-chart-wrapper">
             <h3>1년중 가장 바쁜달은?</h3>
             <BubbleChart data={bubbleChartData} />
             {/* 700 */}
           </div>
-          <div className='chart-container'>
+          <div className="chart-container">
             <div className="bar-chart-wrapper">
               <h3>목표를 가장 잘 이룬 달은 언제인가요?</h3>
               <BarChart data={barChartData} />

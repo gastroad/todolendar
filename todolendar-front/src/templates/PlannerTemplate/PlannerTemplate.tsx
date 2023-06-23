@@ -7,8 +7,6 @@ import TodoListModal from '@organisms/TodoListModal';
 import SectionTitle from '@atoms/SectionTitle';
 import type { Todo } from '@src/types/todoList';
 
-import './PlannerTemplate.scss';
-
 export interface PlannerTemplateProps {
   currentDate: DateTime;
   setCurrentDate: (currentDate: DateTime) => void;

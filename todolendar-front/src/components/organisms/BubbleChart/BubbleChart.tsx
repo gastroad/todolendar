@@ -1,5 +1,13 @@
 import { FC } from 'react';
-import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import {
+  ScatterChart,
+  Scatter,
+  XAxis,
+  YAxis,
+  ZAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts';
 
 const renderTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
@@ -20,16 +28,12 @@ const renderTooltip = ({ active, payload }: any) => {
   return null;
 };
 
-
 type BubbleChartDataType = { month: string; index: number; value: number };
 
 export interface BubbleChartProps {
   data: BubbleChartDataType[];
-
 }
-const BubbleChart: FC<BubbleChartProps> = ({
-  data = [],
-}) => {
+const BubbleChart: FC<BubbleChartProps> = ({ data = [] }) => {
   const parseDomain = () => [0, Math.max(...data.map((entry) => entry.value))];
   const domain = parseDomain();
   return (
@@ -48,7 +52,12 @@ const BubbleChart: FC<BubbleChartProps> = ({
           interval={0}
           tickLine={{ transform: 'translate(0, -6)' }}
         />
-        <ZAxis type="number" dataKey="value" domain={domain} range={[16, 225]} />
+        <ZAxis
+          type="number"
+          dataKey="value"
+          domain={domain}
+          range={[16, 225]}
+        />
         <YAxis
           type="number"
           dataKey="index"
@@ -57,7 +66,6 @@ const BubbleChart: FC<BubbleChartProps> = ({
           tick={false}
           tickLine={false}
           axisLine={false}
-
         />
         <Tooltip
           cursor={{ strokeDasharray: '3 3' }}

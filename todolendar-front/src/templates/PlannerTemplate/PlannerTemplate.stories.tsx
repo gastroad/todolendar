@@ -18,11 +18,11 @@ type Story = StoryObj<PlannerTemplateProps>;
 export const Default: Story = {
   args: {
     currentDate: DateTime.now(),
-    setCurrentDate: () => { },
+    setCurrentDate: () => {},
     todos: [],
-    onDateSelect: () => { },
+    onDateSelect: () => {},
     isOpen: false,
-    openModal: () => { },
-    closeModal: () => { },
+    openModal: () => {},
+    closeModal: () => {},
   },
 };

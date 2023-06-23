@@ -1,4 +1,4 @@
-import { render, fireEvent, act } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import useModal from './useModal';
 
 describe('useModal', () => {
