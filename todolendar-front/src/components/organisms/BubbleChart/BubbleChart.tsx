@@ -37,6 +37,10 @@ const BubbleChart: FC<BubbleChartProps> = ({
       <ScatterChart
         width={800}
         height={60}
+        margin={{
+          top: 10,
+          left: 0,
+        }}
       >
         <XAxis
           dataKey="month"
@@ -58,7 +62,7 @@ const BubbleChart: FC<BubbleChartProps> = ({
         <Tooltip
           cursor={{ strokeDasharray: '3 3' }}
           wrapperStyle={{ zIndex: 100 }}
-        // content={renderTooltip}
+          content={renderTooltip}
         />
         <Scatter data={data} fill="#8884d8" />
       </ScatterChart>
