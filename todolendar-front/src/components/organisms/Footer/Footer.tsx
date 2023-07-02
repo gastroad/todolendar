@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import FooterEmail from '@atoms/FooterEmail';
-import FooterAdmin from '@atoms/FooterAdmin';
+import FooterEmail from '@molecules/FooterEmail';
+import FooterAdmin from '@molecules/FooterAdmin';
 
 import './Footer.scss';
 
