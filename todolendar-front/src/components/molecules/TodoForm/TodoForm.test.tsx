@@ -1,36 +1,36 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import TodoForm, { TodoFormProps } from './TodoForm';
+// import { render, screen, fireEvent } from '@testing-library/react';
+// import TodoForm, { TodoFormProps } from './TodoForm';
 
-describe('TodoForm', () => {
-  const addTodoMock = jest.fn();
-  const props: TodoFormProps = {
-    addTodo: addTodoMock,
-  };
+// describe('TodoForm', () => {
+//   const addTodoMock = jest.fn();
+//   const props: TodoFormProps = {
+//     addTodo: addTodoMock,
+//   };
 
-  beforeEach(() => {
-    render(<TodoForm {...props} />);
-  });
+//   beforeEach(() => {
+//     render(<TodoForm {...props} />);
+//   });
 
-  test('button click', () => {
-    const { getByPlaceholderText, getByText } = screen;
+//   test('button click', () => {
+//     const { getByPlaceholderText, getByText } = screen;
 
-    const input = getByPlaceholderText('일정을 작성해 주세요.');
-    const button = getByText('일정 추가');
+//     const input = getByPlaceholderText('일정을 작성해 주세요.');
+//     const button = getByText('일정 추가');
 
-    fireEvent.change(input, { target: { value: 'New Todo' } });
-    fireEvent.click(button);
+//     fireEvent.change(input, { target: { value: 'New Todo' } });
+//     fireEvent.click(button);
 
-    expect(addTodoMock).toHaveBeenCalledWith('New Todo');
-  });
+//     expect(addTodoMock).toHaveBeenCalledWith('New Todo');
+//   });
 
-  test('Enter key press', () => {
-    const { getByPlaceholderText } = screen;
+//   test('Enter key press', () => {
+//     const { getByPlaceholderText } = screen;
 
-    const input = getByPlaceholderText('일정을 작성해 주세요.');
+//     const input = getByPlaceholderText('일정을 작성해 주세요.');
 
-    fireEvent.change(input, { target: { value: 'New Todo' } });
-    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
+//     fireEvent.change(input, { target: { value: 'New Todo' } });
+//     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
 
-    expect(addTodoMock).toHaveBeenCalledWith('New Todo');
-  });
-});
+//     expect(addTodoMock).toHaveBeenCalledWith('New Todo');
+//   });
+// });

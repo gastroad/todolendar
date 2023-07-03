@@ -5,17 +5,17 @@ import Button from '@atoms/Button';
 import './CalendarHeader.scss';
 
 export interface CalendarHeaderProps {
+  formattedDate: string;
   handlePrevMonth: () => void;
   handleNextMonth: () => void;
   handleThisMonth: () => void;
-  formattedDate: string;
 }
 
 const CalendarHeader: FC<CalendarHeaderProps> = ({
+  formattedDate,
   handlePrevMonth,
   handleNextMonth,
   handleThisMonth,
-  formattedDate,
 }) => {
   return (
     <div className="calendar-header" data-testid="calendar-header">

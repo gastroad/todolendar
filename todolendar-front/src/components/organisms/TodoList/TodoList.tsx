@@ -1,34 +1,35 @@
-import { useState, FC, useMemo } from 'react';
+import { ChangeEvent, FC, useMemo } from 'react';
 import { DateTime } from 'luxon';
 
 import TodoForm from '@molecules/TodoForm';
 import TodoFilter from '@molecules/TodoFilter';
 import TodoItem from '@molecules/TodoItem';
-
 import type { Todo, TodoFilterOption } from '@src/types/todoList';
 
 import './TodoList.scss';
 
 export interface TodoListProps {
   currentDate: DateTime;
-  initialTodos?: Todo[];
-  addTodo: (inputText: string) => void;
+  todos: Todo[] | [];
+  filter: TodoFilterOption;
+  inputText: string;
   toggleTodo: (id: string) => void;
   deleteTodo: (id: string) => void;
+  handleFilterOptions: (filter: TodoFilterOption) => void;
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleButtonClick: () => void;
 }
-
 const TodoList: FC<TodoListProps> = ({
   currentDate,
-  initialTodos = [],
-  addTodo,
+  todos,
+  filter,
+  inputText,
   toggleTodo,
   deleteTodo,
+  handleFilterOptions,
+  handleInputChange,
+  handleButtonClick,
 }) => {
-  const todos = initialTodos;
-  const [filter, setFilter] = useState<TodoFilterOption>('ALL');
-  const filterTodos = (filter: TodoFilterOption) => {
-    setFilter(filter);
-  };
   const filteredTodos = useMemo(() => {
     switch (filter) {
       case 'COMPLETED':
@@ -44,7 +45,7 @@ const TodoList: FC<TodoListProps> = ({
   return (
     <div className="todolist">
       <h2>{currentDate.toFormat('yyyy MM/dd')}</h2>
-      <TodoFilter filter={filter} filterTodos={filterTodos} />
+      <TodoFilter filter={filter} handleFilterOptions={handleFilterOptions} />
       <ul className="todolist-list">
         {Boolean(filteredTodos.length === 0) && (
           <li style={{ textAlign: 'center' }}>
@@ -60,7 +61,11 @@ const TodoList: FC<TodoListProps> = ({
           />
         ))}
       </ul>
-      <TodoForm addTodo={addTodo} />
+      <TodoForm
+        inputText={inputText}
+        handleInputChange={handleInputChange}
+        handleButtonClick={handleButtonClick}
+      />
     </div>
   );
 };

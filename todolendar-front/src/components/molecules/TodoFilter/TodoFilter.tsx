@@ -1,30 +1,30 @@
 import { FC } from 'react';
-import Button from '@atoms/Button';
 
+import Button from '@atoms/Button';
 import type { TodoFilterOption } from '@src/types/todoList';
 
 export interface TodoFilterProps {
-  filterTodos: (filterOption: TodoFilterOption) => void;
   filter: TodoFilterOption;
+  handleFilterOptions: (filterOption: TodoFilterOption) => void;
 }
 
-const TodoFilter: FC<TodoFilterProps> = ({ filterTodos, filter }) => {
+const TodoFilter: FC<TodoFilterProps> = ({ filter, handleFilterOptions }) => {
   return (
     <div className="todo-filter">
       <Button
-        onClick={() => filterTodos('ALL')}
+        onClick={() => handleFilterOptions('ALL')}
         label="All"
         type="tertiary"
         active={filter == 'ALL'}
       />
       <Button
-        onClick={() => filterTodos('COMPLETED')}
+        onClick={() => handleFilterOptions('COMPLETED')}
         label="Completed"
         type="tertiary"
         active={filter == 'COMPLETED'}
       />
       <Button
-        onClick={() => filterTodos('INPROGRESS')}
+        onClick={() => handleFilterOptions('INPROGRESS')}
         label="In Progress"
         type="tertiary"
         active={filter == 'INPROGRESS'}

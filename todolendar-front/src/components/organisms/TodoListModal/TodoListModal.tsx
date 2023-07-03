@@ -1,16 +1,19 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { DateTime } from 'luxon';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import TodoList from '@organisms/TodoList';
-import { Todo } from '@src/types/todoList';
-import closeURL from '../../../assets/images/close.png';
-import './TodoListModal.scss';
 import { httpPostTodos, httpPutTodo, httpDeleteTodo } from '@src/api/planner';
+import { Todo } from '@src/types/todoList';
+import type { TodoFilterOption } from '@src/types/todoList';
+import TodoList from '@organisms/TodoList';
+import useInput from '@src/hooks/useInput/useInput';
+import closeURL from '../../../assets/images/close.png';
+
+import './TodoListModal.scss';
 
 export interface TodoListModalProps {
   currentDate: DateTime;
-  todos?: Todo[];
+  todos: Todo[] | [];
   openModal: () => void;
   closeModal: () => void;
 }
@@ -20,6 +23,8 @@ const TodoListModal: FC<TodoListModalProps> = ({
   todos,
   closeModal,
 }) => {
+  const [filter, setFilter] = useState<TodoFilterOption>('ALL');
+  const todoInput = useInput();
   const queryClient = useQueryClient();
   const postTodosMutation = useMutation(httpPostTodos, {
     onSuccess: () => {
@@ -44,6 +49,7 @@ const TodoListModal: FC<TodoListModalProps> = ({
       date: currentDate.toFormat('yyyy MM/dd'),
     });
   };
+
   const toggleTodo = (id: string) => {
     const todo = todos!.find((todo) => todo.id === id) as Todo;
     putTodoMutation.mutate({
@@ -51,8 +57,14 @@ const TodoListModal: FC<TodoListModalProps> = ({
       completed: !todo.completed,
     });
   };
+
   const deleteTodo = (id: string) => {
     deleteTodoMutation.mutate({ id });
+  };
+
+  const handleButtonClick = () => {
+    addTodo(todoInput.value);
+    todoInput.reset();
   };
 
   return (
@@ -60,16 +72,20 @@ const TodoListModal: FC<TodoListModalProps> = ({
       <div className="modal-content">
         <img
           alt="modal-close"
-          src={closeURL}
           className="modal-close"
+          src={closeURL}
           onClick={closeModal}
         />
         <TodoList
           currentDate={currentDate}
-          initialTodos={todos}
-          addTodo={addTodo}
+          todos={todos}
+          filter={filter}
+          inputText={todoInput.value}
           toggleTodo={toggleTodo}
           deleteTodo={deleteTodo}
+          handleFilterOptions={setFilter}
+          handleButtonClick={handleButtonClick}
+          handleInputChange={todoInput.onChange}
         />
       </div>
     </div>

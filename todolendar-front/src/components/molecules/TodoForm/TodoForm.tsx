@@ -1,23 +1,21 @@
-import { ChangeEvent, FC, KeyboardEvent, useState } from 'react';
+import { ChangeEvent, FC, KeyboardEvent } from 'react';
+
 import TextInput from '@atoms/TextInput';
 import Button from '@atoms/Button';
 
 import './TodoForm.scss';
 
 export interface TodoFormProps {
-  addTodo: (inputText: string) => void;
+  inputText: string;
+  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleButtonClick: () => void;
 }
 
-const TodoForm: FC<TodoFormProps> = ({ addTodo }) => {
-  const [inputText, setInputText] = useState('');
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputText(e.target.value);
-  };
-  const handleButtonClick = () => {
-    addTodo(inputText);
-    setInputText('');
-  };
+const TodoForm: FC<TodoFormProps> = ({
+  inputText,
+  handleInputChange,
+  handleButtonClick,
+}) => {
   const handleInputKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
       handleButtonClick();

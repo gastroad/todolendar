@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import './EmptyCalendarCell.scss';
 
 export interface EmptyCalendarCellProps {}

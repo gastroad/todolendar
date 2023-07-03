@@ -9,23 +9,27 @@ import type { Todo } from '@src/types/todoList';
 
 export interface PlannerTemplateProps {
   currentDate: DateTime;
-  setCurrentDate: (currentDate: DateTime) => void;
   todos: Todo[];
-  onDateSelect: (currentDate: DateTime) => void;
-  handleCurrentDate: (currentDate: DateTime) => void;
   isOpen: boolean;
+  setCurrentDate: (currentDate: DateTime) => void;
   openModal: () => void;
   closeModal: () => void;
+  handlePrevMonth: () => void;
+  handleNextMonth: () => void;
+  handleThisMonth: () => void;
+  handleDateSelect: (date: DateTime) => void;
 }
 
 const PlannerTemplate: FC<PlannerTemplateProps> = ({
   currentDate,
   todos = [],
-  onDateSelect,
   isOpen,
   openModal,
   closeModal,
-  handleCurrentDate,
+  handlePrevMonth,
+  handleNextMonth,
+  handleThisMonth,
+  handleDateSelect,
 }) => {
   const selectedDateTodos = todos.filter(
     (todo) => todo.date === currentDate.toFormat('yyyy MM/dd'),
@@ -36,11 +40,13 @@ const PlannerTemplate: FC<PlannerTemplateProps> = ({
         <SectionTitle title="Planner" />
         <div className="content-wrapper">
           <Calendar
-            onDateSelect={onDateSelect}
             todos={todos}
             height="768px"
-            handleCurrentDate={handleCurrentDate}
             currentDate={currentDate}
+            handlePrevMonth={handlePrevMonth}
+            handleNextMonth={handleNextMonth}
+            handleThisMonth={handleThisMonth}
+            handleDateSelect={handleDateSelect}
           />
         </div>
       </section>

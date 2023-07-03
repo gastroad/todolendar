@@ -8,18 +8,22 @@ import { Todo } from '@src/types/todoList';
 import './Calendar.scss';
 
 export interface CalendarProps {
-  onDateSelect: (date: DateTime) => void;
-  todos?: Todo[];
+  todos: Todo[];
   height?: string;
   currentDate: DateTime;
-  handleCurrentDate: (date: DateTime) => void;
+  handlePrevMonth: () => void;
+  handleNextMonth: () => void;
+  handleThisMonth: () => void;
+  handleDateSelect: (date: DateTime) => void;
 }
 
 const Calendar: FC<CalendarProps> = ({
-  onDateSelect,
   todos = [],
   currentDate,
-  handleCurrentDate,
+  handlePrevMonth,
+  handleNextMonth,
+  handleThisMonth,
+  handleDateSelect,
 }) => {
   const calendarRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
@@ -38,19 +42,6 @@ const Calendar: FC<CalendarProps> = ({
       window.removeEventListener('resize', updateHeight);
     };
   }, []);
-  const handlePrevMonth = () => {
-    handleCurrentDate(currentDate.minus({ month: 1 }));
-  };
-  const handleNextMonth = () => {
-    handleCurrentDate(currentDate.plus({ month: 1 }));
-  };
-  const handleThisMonth = () => {
-    handleCurrentDate(DateTime.now());
-  };
-  const handleDateSelect = (date: DateTime) => {
-    onDateSelect(date);
-  };
-
   return (
     <div className="calendar" ref={calendarRef} style={{ height: height }}>
       <CalendarHeader

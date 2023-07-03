@@ -1,13 +1,20 @@
 import { FC } from 'react';
 
-import './LoginTemplate.scss';
 import LoginForm from '@organisms/LoginForm';
+import type { UseInputResult } from '@src/hooks/useInput/useInput';
 
-export interface LoginTemplateProps {}
-const LoginTemplate: FC<LoginTemplateProps> = () => {
+import './LoginTemplate.scss';
+
+export interface LoginTemplateProps {
+  login: () => void;
+  id: UseInputResult;
+  pw: UseInputResult;
+}
+
+const LoginTemplate: FC<LoginTemplateProps> = ({ login, id, pw }) => {
   return (
     <div className="login-form-wrapper">
-      <LoginForm />
+      <LoginForm login={login} id={id} pw={pw} />
     </div>
   );
 };

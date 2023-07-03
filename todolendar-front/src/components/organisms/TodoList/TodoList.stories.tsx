@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import TodoList, { TodoListProps } from './TodoList';
 import { DateTime } from 'luxon';
 
-const initialTodos = [
+const todos = [
   {
     id: '1',
     text: 'Task 1',
@@ -28,6 +28,6 @@ type Story = StoryObj<TodoListProps>;
 export const Default: Story = {
   args: {
     currentDate: DateTime.now(),
-    initialTodos: initialTodos,
+    todos: todos,
   },
 };

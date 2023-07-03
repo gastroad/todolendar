@@ -2,24 +2,25 @@ import { FC } from 'react';
 import { DateTime } from 'luxon';
 import cx from 'classnames';
 
-import './CalendarCell.scss';
 import { Todo } from '@src/types/todoList';
 import CalendarCellItem from '@atoms/CalendarCellItem';
+
+import './CalendarCell.scss';
 
 export interface CalendarCellProps {
   dayOfMonth: number;
   isCurrentDate: boolean;
-  handleDateSelect: (date: DateTime) => void;
   date: DateTime;
   currentDateTodos?: Todo[];
+  handleDateSelect: (date: DateTime) => void;
 }
 
 const CalendarCell: FC<CalendarCellProps> = ({
   dayOfMonth,
   isCurrentDate,
-  handleDateSelect,
   date,
   currentDateTodos = [],
+  handleDateSelect,
 }) => {
   const isToday = date.startOf('day').equals(DateTime.now().startOf('day'));
   return (

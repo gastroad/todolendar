@@ -1,24 +1,24 @@
 import { FC } from 'react';
 import { DateTime } from 'luxon';
 
+import { Todo } from '@src/types/todoList';
 import CalendarCell from '@src/components/molecules/CalendarCell';
 import EmptyCalendarCell from '@atoms/EmptyCalendarCell';
 
 import './CalendarBody.scss';
-import { Todo } from '@src/types/todoList';
 
 export interface CalendarBodyProps {
+  todos: Todo[] | [];
   currentDate: DateTime;
-  handleDateSelect: (date: DateTime) => void;
-  todos?: Todo[];
   height: string;
+  handleDateSelect: (date: DateTime) => void;
 }
 
 const CalendarBody: FC<CalendarBodyProps> = ({
   currentDate,
-  handleDateSelect,
   todos = [],
   height,
+  handleDateSelect,
 }) => {
   const month = currentDate.month;
   const year = currentDate.year;

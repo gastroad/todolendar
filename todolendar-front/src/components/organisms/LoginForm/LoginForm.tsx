@@ -1,33 +1,19 @@
 import { FC } from 'react';
+
 import TextInput from '@atoms/TextInput';
 import Button from '@atoms/Button';
 import Logo from '@atoms/Logo';
-import useInput from '@src/hooks/useInput/useInput';
-import { useMutation } from '@tanstack/react-query';
-import { httpPostLogin } from '@src/api/auth';
-import { useNavigate } from 'react-router-dom';
+import type { UseInputResult } from '@src/hooks/useInput/useInput';
 
 import './LoginForm.scss';
 
-export interface LoginFormProps {}
-const LoginForm: FC<LoginFormProps> = () => {
-  const id = useInput();
-  const pw = useInput();
-  const navigate = useNavigate();
+export interface LoginFormProps {
+  login: () => void;
+  id: UseInputResult;
+  pw: UseInputResult;
+}
 
-  const postLoginMutation = useMutation(httpPostLogin, {
-    onSuccess: (data) => {
-      navigate('/dashbaord');
-    },
-    onError: (error) => {
-      alert('id 또는 pw 를 확인해 주십시오');
-    },
-  });
-
-  const login = () => {
-    postLoginMutation.mutate({ username: id.value, password: pw.value });
-  };
-
+const LoginForm: FC<LoginFormProps> = ({ login, id, pw }) => {
   return (
     <form
       className="login-from"

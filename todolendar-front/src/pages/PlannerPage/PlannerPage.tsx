@@ -29,8 +29,21 @@ const PlannerPage: FC<PlannerPageProps> = () => {
     setCurrentDate(date);
     openModal();
   };
+
   const handleCurrentDate = (date: DateTime) => {
     setCurrentDate(date);
+  };
+  const handlePrevMonth = () => {
+    handleCurrentDate(currentDate.minus({ month: 1 }));
+  };
+  const handleNextMonth = () => {
+    handleCurrentDate(currentDate.plus({ month: 1 }));
+  };
+  const handleThisMonth = () => {
+    handleCurrentDate(DateTime.now());
+  };
+  const handleDateSelect = (date: DateTime) => {
+    onDateSelect(date);
   };
 
   if (getTodosQuery.isLoading) {
@@ -46,13 +59,15 @@ const PlannerPage: FC<PlannerPageProps> = () => {
     <>
       <PlannerTemplate
         currentDate={currentDate}
-        setCurrentDate={setCurrentDate}
         todos={getTodosQuery.data}
-        onDateSelect={onDateSelect}
         isOpen={isOpen}
-        handleCurrentDate={handleCurrentDate}
+        setCurrentDate={setCurrentDate}
         openModal={openModal}
         closeModal={closeModal}
+        handlePrevMonth={handlePrevMonth}
+        handleNextMonth={handleNextMonth}
+        handleThisMonth={handleThisMonth}
+        handleDateSelect={handleDateSelect}
       />
     </>
   );
