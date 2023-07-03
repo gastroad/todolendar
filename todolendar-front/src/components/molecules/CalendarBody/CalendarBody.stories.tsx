@@ -12,7 +12,9 @@ export default meta;
 type Story = StoryObj<CalendarBodyProps>;
 export const Default: Story = {
   args: {
+    todos: [],
     currentDate: DateTime.local(2023, 1, 15),
     handleDateSelect: (date) => {},
+    height: '500px',
   },
 };
