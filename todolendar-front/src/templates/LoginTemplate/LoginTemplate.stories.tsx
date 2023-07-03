@@ -19,7 +19,18 @@ export default meta;
 
 type Story = StoryObj<LoginTemplateProps>;
 
+const inputResult = {
+  value: '',
+  onChange: () => {},
+  reset: () => {},
+};
+
 export const Default: Story = {
+  args: {
+    id: inputResult,
+    pw: inputResult,
+    login: () => {},
+  },
   decorators: [
     (Story) => (
       <QueryClientProvider client={queryClient}>

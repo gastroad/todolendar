@@ -30,7 +30,7 @@ describe('useModal', () => {
     const { getByText, queryByTestId } = render(<TestComponent />);
     fireEvent.click(getByText('Open Modal'));
     expect(queryByTestId('modal-content')).toBeInTheDocument();
-    fireEvent.keyDown(window, { key: 'Escape' });
+    fireEvent.keyDown(window, { key: 'Escape', code: 'Escape' });
     expect(queryByTestId('modal-content')).toBeNull();
   });
 

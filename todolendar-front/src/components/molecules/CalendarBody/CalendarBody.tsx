@@ -16,7 +16,7 @@ export interface CalendarBodyProps {
 
 const CalendarBody: FC<CalendarBodyProps> = ({
   currentDate,
-  todos = [],
+  todos,
   height,
   handleDateSelect,
 }) => {

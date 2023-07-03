@@ -1,99 +1,59 @@
-// import { render, fireEvent } from '@testing-library/react';
-// import TodoList from './TodoList';
-// import { DateTime } from 'luxon';
+import { render } from '@testing-library/react';
+import TodoList, { TodoListProps } from './TodoList';
+import { DateTime } from 'luxon';
 
-// describe('TodoList', () => {
-//   const currentDate = DateTime.local();
-//   const todos = [
-//     {
-//       id: '1',
-//       text: 'Todo 1',
-//       completed: false,
-//       date: DateTime.now().toFormat('yyyy MM/dd'),
-//     },
-//     {
-//       id: '2',
-//       text: 'Todo 2',
-//       completed: true,
-//       date: DateTime.now().toFormat('yyyy MM/dd'),
-//     },
-//   ];
-//   const addTodoMock = jest.fn();
-//   const toggleTodoMock = jest.fn();
-//   const deleteTodoMock = jest.fn();
+describe('TodoList', () => {
+  const currentDate = DateTime.local();
+  const todos = [
+    {
+      id: '1',
+      text: 'Todo 1',
+      completed: false,
+      date: DateTime.now().toFormat('yyyy MM/dd'),
+    },
+    {
+      id: '2',
+      text: 'Todo 2',
+      completed: true,
+      date: DateTime.now().toFormat('yyyy MM/dd'),
+    },
+  ];
+  const filter = 'ALL';
+  const inputText = '';
+  const toggleTodo = jest.fn();
+  const deleteTodo = jest.fn();
+  const handleFilterOptions = jest.fn();
+  const handleInputChange = jest.fn();
+  const handleButtonClick = jest.fn();
+  const defaultProps: TodoListProps = {
+    currentDate: currentDate,
+    todos: todos,
+    filter: filter,
+    inputText: inputText,
+    toggleTodo: toggleTodo,
+    deleteTodo: deleteTodo,
+    handleFilterOptions: handleFilterOptions,
+    handleInputChange: handleInputChange,
+    handleButtonClick: handleButtonClick,
+  };
 
-//   test('renders TodoList with initial todos', () => {
-//     const { getByText } = render(
-//       <TodoList
-//         currentDate={currentDate}
-//         todos={todos}
-//         addTodo={addTodoMock}
-//         toggleTodo={toggleTodoMock}
-//         deleteTodo={deleteTodoMock}
-//         filter='ALL'
-//         filterTodos={() => { }}
-//       />,
-//     );
+  it('renders TodoList', () => {
+    const { getByText } = render(<TodoList {...defaultProps} />);
 
-//     expect(getByText('Todo 1')).toBeInTheDocument();
-//     expect(getByText('Todo 2')).toBeInTheDocument();
-//   });
+    expect(getByText('Todo 1')).toBeInTheDocument();
+    expect(getByText('Todo 2')).toBeInTheDocument();
+  });
 
-//   test('calls addTodo when TodoForm adds a new todo', () => {
-//     const { getByText, getByPlaceholderText } = render(
-//       <TodoList
-//         currentDate={currentDate}
-//         addTodo={addTodoMock}
-//         toggleTodo={toggleTodoMock}
-//         deleteTodo={deleteTodoMock}
-//         filter='ALL'
-//         filterTodos={() => { }}
-//       />,
-//     );
+  it('renders TodoList completed', () => {
+    const props: TodoListProps = { ...defaultProps, filter: 'COMPLETED' };
+    const { getByText } = render(<TodoList {...props} />);
 
-//     const input = getByPlaceholderText('일정을 작성해 주세요.');
-//     const button = getByText('일정 추가');
+    expect(getByText('Todo 2')).toBeInTheDocument();
+  });
+  it('renders TodoList INPROGRESS', () => {
+    const props: TodoListProps = { ...defaultProps, filter: 'INPROGRESS' };
+    const { getByText } = render(<TodoList {...props} />);
 
-//     fireEvent.change(input, { target: { value: 'New Todo' } });
-//     fireEvent.click(button);
-
-//     expect(addTodoMock).toHaveBeenCalledWith('New Todo');
-//   });
-
-//   test('calls toggleTodo when TodoItem is toggled', () => {
-//     const { getByText } = render(
-//       <TodoList
-//         currentDate={currentDate}
-//         todos={todos}
-//         addTodo={addTodoMock}
-//         toggleTodo={toggleTodoMock}
-//         deleteTodo={deleteTodoMock}
-//         filter='ALL'
-//         filterTodos={() => { }}
-//       />,
-//     );
-
-//     const todoItem = getByText('Todo 1');
-//     fireEvent.click(todoItem);
-
-//     expect(toggleTodoMock).toHaveBeenCalledWith('1');
-//   });
-
-//   test('calls deleteTodo when TodoItem is deleted', () => {
-//     const { getAllByText } = render(
-//       <TodoList
-//         currentDate={currentDate}
-//         todos={todos}
-//         addTodo={addTodoMock}
-//         toggleTodo={toggleTodoMock}
-//         deleteTodo={deleteTodoMock}
-//         filter='ALL'
-//         filterTodos={() => { }}
-//       />,
-//     );
-//     const deleteButton = getAllByText('Delete');
-//     fireEvent.click(deleteButton[1]);
-
-//     expect(deleteTodoMock).toHaveBeenCalledWith('2');
-//   });
-// });
+    expect(getByText('Todo 1')).toBeInTheDocument();
+  });
+});

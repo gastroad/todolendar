@@ -1,15 +1,18 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import FooterEmail, { FooterEmailProps } from './FooterEmail';
 
-test('renders FooterEmail component', () => {
-  const props: FooterEmailProps = {
-    email: 'test@test.com',
+describe('FooterEmail', () => {
+  const email = 'test@test.com';
+  const defaultProps = {
+    email: email,
   };
-  render(<FooterEmail {...props} />);
+  it('render FooterEmail', () => {
+    const { getByText } = render(<FooterEmail {...defaultProps} />);
 
-  const adminElement = screen.getByText(/Email:/i);
-  const adminNameElement = screen.getByText(props.email);
+    const adminElement = getByText(/Email:/i);
+    const adminNameElement = getByText(email);
 
-  expect(adminElement).toBeInTheDocument();
-  expect(adminNameElement).toBeInTheDocument();
+    expect(adminElement).toBeInTheDocument();
+    expect(adminNameElement).toBeInTheDocument();
+  });
 });

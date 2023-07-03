@@ -1,40 +1,38 @@
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import TodoFilter, { TodoFilterProps } from './TodoFilter';
+import { render, fireEvent } from '@testing-library/react';
+import TodoFilter, { TodoFilterProps } from './TodoFilter';
 
-// describe('TodoFilter', () => {
-//   const filterTodosMock = jest.fn();
+describe('TodoFilter', () => {
+  const handleFilterOptions = jest.fn();
+  const filter = 'ALL';
+  const defaultProps: TodoFilterProps = {
+    filter: filter,
+    handleFilterOptions: handleFilterOptions,
+  };
 
-//   const props: TodoFilterProps = {
-//     filterTodos: filterTodosMock,
-//     filter: 'ALL',
-//   };
+  it('render TodoFilter', () => {
+    const { getByText } = render(<TodoFilter {...defaultProps} />);
+    const allButton = getByText('All');
+    const completedButton = getByText('Completed');
+    const inProgressButton = getByText('In Progress');
 
-//   beforeEach(() => {
-//     render(<TodoFilter {...props} />);
-//   });
+    expect(allButton).toBeInTheDocument();
+    expect(completedButton).toBeInTheDocument();
+    expect(inProgressButton).toBeInTheDocument();
+  });
 
-//   it('renders three filter buttons', () => {
-//     const allButton = screen.getByText('All');
-//     const completedButton = screen.getByText('Completed');
-//     const inProgressButton = screen.getByText('In Progress');
+  it('calls handleFilterOptions', () => {
+    const { getByText } = render(<TodoFilter {...defaultProps} />);
+    const allButton = getByText('All');
+    const completedButton = getByText('Completed');
+    const inProgressButton = getByText('In Progress');
 
-//     expect(allButton).toBeInTheDocument();
-//     expect(completedButton).toBeInTheDocument();
-//     expect(inProgressButton).toBeInTheDocument();
-//   });
+    fireEvent.click(allButton);
+    expect(handleFilterOptions).toHaveBeenCalledWith('ALL');
 
-//   it('calls filterTodos with correct filter option when a button is clicked', () => {
-//     const allButton = screen.getByText('All');
-//     const completedButton = screen.getByText('Completed');
-//     const inProgressButton = screen.getByText('In Progress');
+    fireEvent.click(completedButton);
+    expect(handleFilterOptions).toHaveBeenCalledWith('COMPLETED');
 
-//     fireEvent.click(allButton);
-//     expect(filterTodosMock).toHaveBeenCalledWith('ALL');
-
-//     fireEvent.click(completedButton);
-//     expect(filterTodosMock).toHaveBeenCalledWith('COMPLETED');
-
-//     fireEvent.click(inProgressButton);
-//     expect(filterTodosMock).toHaveBeenCalledWith('INPROGRESS');
-//   });
-// });
+    fireEvent.click(inProgressButton);
+    expect(handleFilterOptions).toHaveBeenCalledWith('INPROGRESS');
+  });
+});

@@ -1,28 +1,40 @@
 import { render, fireEvent } from '@testing-library/react';
-import TextInput from './TextInput';
+import TextInput, { TextInputProps } from './TextInput';
 
-test('renders TextInput component', () => {
-  const handleChange = jest.fn();
-  const handleKeyDown = jest.fn();
-  const placeholderText = 'Enter text';
+describe('TextInput', () => {
+  const onKeyDown = jest.fn();
+  const onChange = jest.fn();
+  const placeholder = 'Enter text';
+  const value = '';
+  const defaultProps: TextInputProps = {
+    value: value,
+    placeholder: placeholder,
+    onChange: onChange,
+    onKeyDown: onKeyDown,
+  };
 
-  const { getByPlaceholderText } = render(
-    <TextInput
-      value=""
-      placeholder={placeholderText}
-      onChange={handleChange}
-      onKeyDown={handleKeyDown}
-    />,
-  );
+  it('render TextInput', () => {
+    const { getByPlaceholderText } = render(<TextInput {...defaultProps} />);
+    const input = getByPlaceholderText(placeholder);
 
-  const inputElement = getByPlaceholderText(placeholderText);
+    expect(input).toBeInTheDocument();
+  });
 
-  fireEvent.change(inputElement, { target: { value: 'Hello, World!' } });
-  fireEvent.keyDown(inputElement, { key: 'Enter', code: 'Enter' });
+  it('calls onChange', () => {
+    const { getByPlaceholderText } = render(<TextInput {...defaultProps} />);
+    const input = getByPlaceholderText(placeholder);
+    fireEvent.change(input, { target: { value: 'Hello, World!' } });
 
-  expect(handleChange).toHaveBeenCalledTimes(1);
-  expect(handleChange).toHaveBeenCalledWith(expect.any(Object));
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith(expect.any(Object));
+  });
 
-  expect(handleKeyDown).toHaveBeenCalledTimes(1);
-  expect(handleKeyDown).toHaveBeenCalledWith(expect.any(Object));
+  it('calls onKeyDown', () => {
+    const { getByPlaceholderText } = render(<TextInput {...defaultProps} />);
+    const input = getByPlaceholderText(placeholder);
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
+
+    expect(onKeyDown).toHaveBeenCalledTimes(1);
+    expect(onKeyDown).toHaveBeenCalledWith(expect.any(Object));
+  });
 });

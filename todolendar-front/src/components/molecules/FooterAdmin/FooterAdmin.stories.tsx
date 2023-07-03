@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import FooterAdmin, { FooterAdminProps } from './FooterAdmin';
 
 const meta: Meta<FooterAdminProps> = {
-  title: 'components/atoms/FooterAdmin',
+  title: 'components/molecules/FooterAdmin',
   component: FooterAdmin,
 };
 export default meta;

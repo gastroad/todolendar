@@ -1,17 +1,17 @@
-// import { Meta, StoryObj } from '@storybook/react';
-// import TodoFilter, { TodoFilterProps } from './TodoFilter';
+import { Meta, StoryObj } from '@storybook/react';
+import TodoFilter, { TodoFilterProps } from './TodoFilter';
 
-// const meta: Meta<TodoFilterProps> = {
-//   title: 'components/molecules/TodoFilter',
-//   component: TodoFilter,
-// };
-// export default meta;
+const meta: Meta<TodoFilterProps> = {
+  title: 'components/molecules/TodoFilter',
+  component: TodoFilter,
+};
+export default meta;
 
-// type Story = StoryObj<TodoFilterProps>;
+type Story = StoryObj<TodoFilterProps>;
 
-// export const Default: Story = {
-//   args: {
-//     filter: 'ALL',
-//     filterTodos: () => {},
-//   },
-// };
+export const Default: Story = {
+  args: {
+    filter: 'ALL',
+    handleFilterOptions: () => {},
+  },
+};

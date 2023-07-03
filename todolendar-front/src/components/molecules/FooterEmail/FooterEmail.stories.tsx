@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import FooterEmail, { FooterEmailProps } from './FooterEmail';
 
 const meta: Meta<FooterEmailProps> = {
-  title: 'components/atoms/FooterEmail',
+  title: 'components/molecules/FooterEmail',
   component: FooterEmail,
 };
 export default meta;

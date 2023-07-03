@@ -1,30 +1,45 @@
 import { render, fireEvent } from '@testing-library/react';
-import ArrowButton, { directionMapper } from './ArrowButton';
+import ArrowButton, { ArrowButtonProps, directionMapper } from './ArrowButton';
 
-test('renders arrow button', () => {
-  const mockOnClick = jest.fn();
-  const direction = 'left';
-  const { container } = render(
-    <ArrowButton onClick={mockOnClick} direction={direction} name="" />,
-  );
+describe('ArrowButton', () => {
+  const onClickMock = jest.fn();
+  const name = 'arrow-button';
+  const defaultProps: ArrowButtonProps = {
+    onClick: onClickMock,
+    direction: 'left',
+    name: name,
+  };
 
-  const buttonElement = container.firstChild;
-  expect(buttonElement).toBeInTheDocument();
-  expect(buttonElement).toHaveClass(`arrow-btn ${direction}`);
-  expect(buttonElement).toContainHTML(
-    `<img src="${directionMapper[direction]}"`,
-  );
-});
+  it('render ArrowButton', () => {
+    const { getByTestId } = render(<ArrowButton {...defaultProps} />);
 
-test('calls onClick', () => {
-  const mockOnClick = jest.fn();
-  const direction = 'right';
-  const { container } = render(
-    <ArrowButton onClick={mockOnClick} direction={direction} name="" />,
-  );
+    const button = getByTestId(name);
+    const img = button.querySelector('img');
 
-  const buttonElement = container.firstChild;
-  fireEvent.click(buttonElement as HTMLElement);
+    expect(button).toBeInTheDocument();
+    expect(button).toHaveClass('arrow-btn', 'left');
+    expect(button).toHaveAttribute('name', name);
+    expect(img).toBeInTheDocument();
+    expect(img).toHaveAttribute('src', directionMapper.left);
+  });
 
-  expect(mockOnClick).toHaveBeenCalled();
+  it('render ArrowButton right direction', () => {
+    const { getByTestId } = render(
+      <ArrowButton {...defaultProps} direction="right" />,
+    );
+
+    const button = getByTestId(name);
+    const img = button.querySelector('img');
+
+    expect(img).toHaveAttribute('src', directionMapper.right);
+  });
+
+  it('calls onClick', () => {
+    const { getByTestId } = render(<ArrowButton {...defaultProps} />);
+
+    const button = getByTestId(name);
+
+    fireEvent.click(button);
+    expect(onClickMock).toHaveBeenCalledTimes(1);
+  });
 });

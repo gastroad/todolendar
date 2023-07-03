@@ -2,12 +2,12 @@ import { render } from '@testing-library/react';
 import SectionTitle, { SectionTitleProps } from './SectionTitle';
 
 describe('SectionTitle', () => {
-  test('renders the title correctly', () => {
+  it('render SectionTitle', () => {
     const title = '테스트';
-    const props: SectionTitleProps = {
+    const defaultProps: SectionTitleProps = {
       title,
     };
-    const { getByText } = render(<SectionTitle {...props} />);
+    const { getByText } = render(<SectionTitle {...defaultProps} />);
 
     expect(getByText(title)).toBeInTheDocument();
   });

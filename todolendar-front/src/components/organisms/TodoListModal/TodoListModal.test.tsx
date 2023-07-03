@@ -2,11 +2,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { DateTime } from 'luxon';
 import TodoListModal from './TodoListModal';
 import { Todo } from '@src/types/todoList';
-import {
-  QueryClientProvider,
-  useQueryClient,
-  QueryClient,
-} from '@tanstack/react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 describe('TodoListModal', () => {
   const currentDate = DateTime.local();
@@ -25,7 +21,7 @@ describe('TodoListModal', () => {
     },
   ];
 
-  test('renders TodoListModal with initial todos', () => {
+  it('renders TodoListModal with initial todos', () => {
     const queryClient = new QueryClient();
     const { getByText } = render(
       <QueryClientProvider client={queryClient}>
@@ -43,7 +39,7 @@ describe('TodoListModal', () => {
     expect(getByText('Todo 2')).toBeInTheDocument();
   });
 
-  test('calls closeModal when close button is clicked', () => {
+  it('calls closeModal when close button is clicked', () => {
     const closeModal = jest.fn();
     const queryClient = new QueryClient();
     const { getByAltText } = render(

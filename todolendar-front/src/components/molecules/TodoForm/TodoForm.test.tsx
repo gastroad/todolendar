@@ -1,36 +1,60 @@
-// import { render, screen, fireEvent } from '@testing-library/react';
-// import TodoForm, { TodoFormProps } from './TodoForm';
+import { render, fireEvent } from '@testing-library/react';
+import TodoForm, { TodoFormProps } from './TodoForm';
 
-// describe('TodoForm', () => {
-//   const addTodoMock = jest.fn();
-//   const props: TodoFormProps = {
-//     addTodo: addTodoMock,
-//   };
+describe('TodoForm', () => {
+  const inputText = '';
+  const handleInputChange = jest.fn();
+  const handleButtonClick = jest.fn();
 
-//   beforeEach(() => {
-//     render(<TodoForm {...props} />);
-//   });
+  const defaultProps: TodoFormProps = {
+    inputText: inputText,
+    handleInputChange: handleInputChange,
+    handleButtonClick: handleButtonClick,
+  };
+  it('render TodoForm', () => {
+    const { getByPlaceholderText, getByText } = render(
+      <TodoForm {...defaultProps} />,
+    );
 
-//   test('button click', () => {
-//     const { getByPlaceholderText, getByText } = screen;
+    const input = getByPlaceholderText('일정을 작성해 주세요.');
+    const button = getByText('일정 추가');
 
-//     const input = getByPlaceholderText('일정을 작성해 주세요.');
-//     const button = getByText('일정 추가');
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveValue(inputText);
+    expect(button).toBeInTheDocument();
+  });
 
-//     fireEvent.change(input, { target: { value: 'New Todo' } });
-//     fireEvent.click(button);
+  it('calls handleInputChange', () => {
+    const { getByPlaceholderText } = render(<TodoForm {...defaultProps} />);
 
-//     expect(addTodoMock).toHaveBeenCalledWith('New Todo');
-//   });
+    const input = getByPlaceholderText('일정을 작성해 주세요.');
 
-//   test('Enter key press', () => {
-//     const { getByPlaceholderText } = screen;
+    fireEvent.change(input, { target: { value: 'New Todo' } });
 
-//     const input = getByPlaceholderText('일정을 작성해 주세요.');
+    expect(handleInputChange).toHaveBeenCalledWith(expect.any(Object));
+  });
+  it('calls handleButtonClick', () => {
+    const { getByPlaceholderText, getByText } = render(
+      <TodoForm {...defaultProps} />,
+    );
 
-//     fireEvent.change(input, { target: { value: 'New Todo' } });
-//     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
+    const input = getByPlaceholderText('일정을 작성해 주세요.');
+    const button = getByText('일정 추가');
 
-//     expect(addTodoMock).toHaveBeenCalledWith('New Todo');
-//   });
-// });
+    fireEvent.change(input, { target: { value: 'New Todo' } });
+    fireEvent.click(button);
+
+    expect(handleButtonClick).toHaveBeenCalledTimes(1);
+    handleButtonClick.mockClear();
+  });
+
+  it('calls handleInputKeyDown', () => {
+    const { getByPlaceholderText } = render(<TodoForm {...defaultProps} />);
+
+    const input = getByPlaceholderText('일정을 작성해 주세요.');
+
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
+
+    expect(handleButtonClick).toHaveBeenCalledTimes(1);
+  });
+});
