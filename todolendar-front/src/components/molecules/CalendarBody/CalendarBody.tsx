@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { DateTime } from 'luxon';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 import { Todo } from '@src/types/todoList';
 import CalendarCell from '@src/components/molecules/CalendarCell';
@@ -20,6 +21,8 @@ const CalendarBody: FC<CalendarBodyProps> = ({
   height,
   handleDateSelect,
 }) => {
+  const [parent] = useAutoAnimate();
+
   const month = currentDate.month;
   const year = currentDate.year;
   const firstDayOfMonth = DateTime.local(year, month, 1).weekday;
@@ -29,6 +32,7 @@ const CalendarBody: FC<CalendarBodyProps> = ({
       className="calendar-body"
       data-testid="calendar-body"
       style={{ height: `calc(${height} - 36px - 0.5rem)` }}
+      ref={parent}
     >
       {Array.from({ length: firstDayOfMonth }).map((_, index) => {
         return <EmptyCalendarCell key={`empty-${index}`} />;

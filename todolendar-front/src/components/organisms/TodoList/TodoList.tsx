@@ -1,5 +1,6 @@
 import { ChangeEvent, FC, useMemo } from 'react';
 import { DateTime } from 'luxon';
+import { useAutoAnimate } from '@formkit/auto-animate/react';
 
 import TodoForm from '@molecules/TodoForm';
 import TodoFilter from '@molecules/TodoFilter';
@@ -30,6 +31,7 @@ const TodoList: FC<TodoListProps> = ({
   handleInputChange,
   handleButtonClick,
 }) => {
+  const [parent] = useAutoAnimate();
   const filteredTodos = useMemo(() => {
     switch (filter) {
       case 'COMPLETED':
@@ -46,7 +48,7 @@ const TodoList: FC<TodoListProps> = ({
     <div className="todolist">
       <h2>{currentDate.toFormat('yyyy MM/dd')}</h2>
       <TodoFilter filter={filter} handleFilterOptions={handleFilterOptions} />
-      <ul className="todolist-list">
+      <ul className="todolist-list" ref={parent}>
         {Boolean(filteredTodos.length === 0) && (
           <li style={{ textAlign: 'center' }}>
             <span>오늘의 일정을 추가해주세요</span>

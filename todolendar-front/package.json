@@ -14,6 +14,7 @@
   "author": "gastroad",
   "license": "MIT",
   "dependencies": {
+    "@formkit/auto-animate": "^0.7.0",
     "@tanstack/react-query": "^4.29.14",
     "axios": "^1.4.0",
     "classnames": "^2.3.2",
