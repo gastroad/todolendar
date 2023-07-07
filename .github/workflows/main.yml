@@ -1,4 +1,4 @@
-name: run Test, prettier on Push
+name: run Test
 
 on:
   push:
@@ -7,10 +7,10 @@ on:
 
 jobs:
   test:
-    name: Run Tests, prettier
+    name: Run Tests
     runs-on: ubuntu-latest
 
-    steps:
+    steps: 
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -24,12 +24,6 @@ jobs:
           cd $GITHUB_WORKSPACE/todolendar-front
           npm install
           npm run test
-
-      - name: Format code with Prettier
-        run: |
-          cd $GITHUB_WORKSPACE/todolendar-front
-          npm run prettier
-  
 
   additional-work:
     name: Additional Work
