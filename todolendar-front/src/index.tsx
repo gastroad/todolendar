@@ -13,7 +13,7 @@ import '@assets/styles/reset.scss';
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
+      <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <RecoilRoot>
         <RouterProvider router={router} />
