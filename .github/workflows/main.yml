@@ -1,4 +1,4 @@
-name: Test on Push
+name: run Test, prettier on Push
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    name: Run Tests
+    name: Run Tests, prettier
     runs-on: ubuntu-latest
 
     steps:
@@ -17,19 +17,19 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
-
-      - name: Change directory to todolendar-front
-        run: cd todolendar-front
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Format code with Prettier
-        run: npm run prettier
+          node-version: '18'
 
       - name: Run tests
-        run: npm run test
+        run: |
+          cd $GITHUB_WORKSPACE/todolendar-front
+          npm install
+          npm run test
+
+      - name: Format code with Prettier
+        run: |
+          cd $GITHUB_WORKSPACE/todolendar-front
+          npm run prettier
+  
 
   additional-work:
     name: Additional Work
