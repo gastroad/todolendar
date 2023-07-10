@@ -37,6 +37,8 @@ do
             npm install
             npm run dev &
             server2_pid=$!
+            open "http://localhost"
+            start "" "http://localhost"
             break
             ;;
         "2. todolendar-dev 실행")
@@ -50,6 +52,8 @@ do
             cd todolendar-front
             npm run dev &
             server2_pid=$!
+            open "http://localhost"
+            start "" "http://localhost"
             break
             ;;
         "나가기")
