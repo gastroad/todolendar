@@ -9,6 +9,14 @@ import LoginPage from '@pages/LoginPage';
 const router = createBrowserRouter([
   {
     path: '/',
+    element: <Navigate to="/login" replace />,
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/',
     element: <LayoutTemplate />,
     children: [
       {
@@ -24,10 +32,6 @@ const router = createBrowserRouter([
         element: <Navigate to="/dashbaord" replace />,
       },
     ],
-  },
-  {
-    path: '/login',
-    element: <LoginPage />,
   },
 ]);
 export default router;

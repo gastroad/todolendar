@@ -9,9 +9,9 @@ const LayoutTemplate: FC = () => {
   return (
     <>
       <Header />
-      <section>
+      <>
         <Outlet />
-      </section>
+      </>
       <Footer email="coldpotatosweet@gmail.com" adminName="진현성" />
     </>
   );
