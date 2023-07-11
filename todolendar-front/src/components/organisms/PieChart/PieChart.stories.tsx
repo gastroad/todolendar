@@ -1,14 +1,14 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import HalfPieChart, { HalfPieChartProps } from './HalfPieChart';
+import PieChart, { PieChartProps } from './PieChart';
 
-const meta: Meta<HalfPieChartProps> = {
-  title: 'components/organisms/HalfPieChart',
-  component: HalfPieChart,
+const meta: Meta<PieChartProps> = {
+  title: 'components/organisms/PieChart',
+  component: PieChart,
 };
 export default meta;
 
-type Story = StoryObj<HalfPieChartProps>;
+type Story = StoryObj<PieChartProps>;
 
 export const Default: Story = {
   args: {

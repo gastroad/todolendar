@@ -36,7 +36,7 @@ const PlannerTemplate: FC<PlannerTemplateProps> = ({
   );
   return (
     <>
-      <section className="section">
+      <>
         <SectionTitle title="Planner" />
         <div className="content-wrapper">
           <Calendar
@@ -49,7 +49,7 @@ const PlannerTemplate: FC<PlannerTemplateProps> = ({
             handleDateSelect={handleDateSelect}
           />
         </div>
-      </section>
+      </>
       {isOpen &&
         createPortal(
           <TodoListModal

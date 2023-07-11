@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react';
 import SectionTitle from '@atoms/SectionTitle';
 import BarChart from '@organisms/BarChart';
-import HalfPieChart from '@organisms/HalfPieChart';
+import PieChart from '@organisms/PieChart';
 import BubbleChart from '@organisms/BubbleChart';
 import { Todo } from '@src/types/todoList';
 
@@ -54,7 +54,7 @@ const DashboardTemplate: FC<DashboardTemplateProps> = ({ todos }) => {
 
   return (
     <>
-      <section className="section">
+      <>
         <SectionTitle title="DashBoard" />
         <div className="content-wrapper">
           <div className="bubble-chart-wrapper">
@@ -70,12 +70,12 @@ const DashboardTemplate: FC<DashboardTemplateProps> = ({ todos }) => {
             </div>
             <div className="half-pie-chart-wrapper">
               <h3>올해 목표는 얼마나 달성되었나요?</h3>
-              <HalfPieChart data={halfPieChartData} width={260} />
+              <PieChart data={halfPieChartData} width={260} />
               {/* 260 */}
             </div>
           </div>
         </div>
-      </section>
+      </>
     </>
   );
 };
