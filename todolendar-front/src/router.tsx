@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-import LayoutTemplate from '@templates/LayoutTemplate';
+import AuthLayoutTemplate from '@src/templates/AuthLayoutTemplate';
 
 import DashboardPage from '@pages/DashboardPage';
 import PlannerPage from '@src/pages/PlannerPage';
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <LayoutTemplate />,
+    element: <AuthLayoutTemplate />,
     children: [
       {
         path: 'dashbaord',

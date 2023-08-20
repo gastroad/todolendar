@@ -3,6 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 
 import LoginTemplate from '@templates/LoginTemplate';
+import LoginForm from '@src/components/organisms/LoginForm';
 import useInput from '@src/hooks/useInput/useInput';
 import { httpPostLogin } from '@src/api/auth';
 
@@ -28,7 +29,9 @@ const LoginPage: FC<LoginPageProps> = () => {
 
   return (
     <>
-      <LoginTemplate login={login} id={id} pw={pw} />
+      <LoginTemplate>
+        <LoginForm login={login} id={id} pw={pw} />
+      </LoginTemplate>
     </>
   );
 };

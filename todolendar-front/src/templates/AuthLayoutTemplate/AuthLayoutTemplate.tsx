@@ -1,11 +1,12 @@
 import { FC } from 'react';
 import { Outlet } from 'react-router';
+
 import Header from '@organisms/Header';
 import Footer from '@organisms/Footer';
 
-import './LayoutTemplate.scss';
+import './AuthLayoutTemplate.scss';
 
-const LayoutTemplate: FC = () => {
+const AuthLayoutTemplate: FC = () => {
   return (
     <>
       <Header />
@@ -17,4 +18,4 @@ const LayoutTemplate: FC = () => {
   );
 };
 
-export default LayoutTemplate;
+export default AuthLayoutTemplate;

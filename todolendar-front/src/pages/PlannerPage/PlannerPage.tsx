@@ -1,9 +1,12 @@
 import { FC, useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
-import PlannerTemplate from '@src/templates/PlannerTemplate';
-import useModal from '@src/hooks/useModal/useModal';
-
+import { createPortal } from 'react-dom';
 import { useQuery } from '@tanstack/react-query';
+
+import ContentTemplate from '@src/templates/ContentTemplate';
+import Calendar from '@organisms/Calendar';
+import TodoListModal from '@organisms/TodoListModal';
+import useModal from '@src/hooks/useModal/useModal';
 import { httpGetTodos } from '@src/api/planner';
 import { Todo } from '@src/types/todoList';
 
@@ -55,20 +58,34 @@ const PlannerPage: FC<PlannerPageProps> = () => {
     // template 으로 제작
     return <>에러 발생</>;
   }
+
+  const selectedDateTodos = getTodosQuery.data.filter(
+    (todo) => todo.date === currentDate.toFormat('yyyy MM/dd'),
+  );
+
   return (
     <>
-      <PlannerTemplate
-        currentDate={currentDate}
-        todos={getTodosQuery.data}
-        isOpen={isOpen}
-        setCurrentDate={setCurrentDate}
-        openModal={openModal}
-        closeModal={closeModal}
-        handlePrevMonth={handlePrevMonth}
-        handleNextMonth={handleNextMonth}
-        handleThisMonth={handleThisMonth}
-        handleDateSelect={handleDateSelect}
-      />
+      <ContentTemplate title="Planner">
+        <Calendar
+          todos={getTodosQuery.data}
+          height="768px"
+          currentDate={currentDate}
+          handlePrevMonth={handlePrevMonth}
+          handleNextMonth={handleNextMonth}
+          handleThisMonth={handleThisMonth}
+          handleDateSelect={handleDateSelect}
+        />
+      </ContentTemplate>
+      {isOpen &&
+        createPortal(
+          <TodoListModal
+            currentDate={currentDate}
+            todos={selectedDateTodos}
+            openModal={openModal}
+            closeModal={closeModal}
+          />,
+          document.getElementById('root-modal') as HTMLElement,
+        )}
     </>
   );
 };
