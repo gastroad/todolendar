@@ -17,7 +17,7 @@ describe('useModal', () => {
     );
   };
 
-  test('opens and closes modal', () => {
+  it('opens and closes modal', () => {
     const { getByText, queryByText } = render(<TestComponent />);
     expect(queryByText('Modal Content')).toBeNull();
     fireEvent.click(getByText('Open Modal'));
@@ -26,7 +26,7 @@ describe('useModal', () => {
     expect(queryByText('Modal Content')).toBeNull();
   });
 
-  test('closes modal on escape key press', () => {
+  it('closes modal on escape key press', () => {
     const { getByText, queryByTestId } = render(<TestComponent />);
     fireEvent.click(getByText('Open Modal'));
     expect(queryByTestId('modal-content')).toBeInTheDocument();
@@ -34,7 +34,7 @@ describe('useModal', () => {
     expect(queryByTestId('modal-content')).toBeNull();
   });
 
-  test('closes modal on outside click', () => {
+  it('closes modal on outside click', () => {
     const { getByText, queryByText } = render(<TestComponent />);
     fireEvent.click(getByText('Open Modal'));
     expect(queryByText('Modal Content')).toBeInTheDocument();
