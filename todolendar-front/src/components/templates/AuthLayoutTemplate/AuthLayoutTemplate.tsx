@@ -6,6 +6,7 @@ import Footer from '@organisms/Footer';
 
 import './AuthLayoutTemplate.scss';
 
+export interface AuthLayoutTemplateProps {}
 const AuthLayoutTemplate: FC = () => {
   return (
     <>
