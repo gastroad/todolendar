@@ -3,7 +3,7 @@ import { DateTime } from 'luxon';
 import { createPortal } from 'react-dom';
 import { useQuery } from '@tanstack/react-query';
 
-import ContentTemplate from '@src/templates/ContentTemplate';
+import ContentTemplate from '@templates/ContentTemplate';
 import Calendar from '@organisms/Calendar';
 import TodoListModal from '@organisms/TodoListModal';
 import useModal from '@src/hooks/useModal/useModal';

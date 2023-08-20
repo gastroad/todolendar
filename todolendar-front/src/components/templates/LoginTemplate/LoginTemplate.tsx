@@ -7,7 +7,7 @@ export interface LoginTemplateProps {
 }
 
 const LoginTemplate: FC<LoginTemplateProps> = ({ children }) => {
-  return <div className="login-form-wrapper">{children}</div>;
+  return <main className="login-form-wrapper">{children}</main>;
 };
 
 export default LoginTemplate;

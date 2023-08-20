@@ -1,6 +1,6 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 
-import AuthLayoutTemplate from '@src/templates/AuthLayoutTemplate';
+import AuthLayoutTemplate from '@templates/AuthLayoutTemplate';
 
 import DashboardPage from '@pages/DashboardPage';
 import PlannerPage from '@src/pages/PlannerPage';

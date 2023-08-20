@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 
 import LoginTemplate from '@templates/LoginTemplate';
-import LoginForm from '@src/components/organisms/LoginForm';
+import LoginForm from '@organisms/LoginForm';
 import useInput from '@src/hooks/useInput/useInput';
 import { httpPostLogin } from '@src/api/auth';
 

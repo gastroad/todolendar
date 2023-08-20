@@ -22,7 +22,7 @@ const ArrowButton: FC<ArrowButtonProps> = ({ onClick, direction, name }) => {
       name={name}
       data-testid={name}
     >
-      <img src={directionMapper[direction]} />
+      <img src={directionMapper[direction]} alt={`${direction}-button-icon`} />
     </button>
   );
 };

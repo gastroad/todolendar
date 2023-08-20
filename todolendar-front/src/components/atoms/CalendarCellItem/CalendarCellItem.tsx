@@ -13,9 +13,10 @@ const mapper = ['one', 'two', 'three', 'four', 'five', 'six', 'seven'];
 const CalendarCellItem: FC<CalendarCellItemProps> = ({ todo }) => {
   const className = useMemo(
     () =>
-      `calendar-cell-item ${todo.completed
-        ? 'completed'
-        : mapper[Math.floor(Math.random() * mapper.length)]
+      `calendar-cell-item ${
+        todo.completed
+          ? 'completed'
+          : mapper[Math.floor(Math.random() * mapper.length)]
       }`,
     [todo],
   );

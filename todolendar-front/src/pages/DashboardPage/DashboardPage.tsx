@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { DateTime } from 'luxon';
 
-import ContentTemplate from '@src/templates/ContentTemplate';
+import ContentTemplate from '@templates/ContentTemplate';
 import BarChart from '@organisms/BarChart';
 import PieChart from '@organisms/PieChart';
 import BubbleChart from '@organisms/BubbleChart';

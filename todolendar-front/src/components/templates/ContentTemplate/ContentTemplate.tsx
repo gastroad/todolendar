@@ -12,7 +12,7 @@ const ContentTemplate: FC<DashboardTemplateProps> = ({ title, children }) => {
   return (
     <>
       <SectionTitle title={title} />
-      <div className="content-wrapper">{children}</div>
+      <main className="content-wrapper">{children}</main>
     </>
   );
 };

@@ -29,7 +29,7 @@
         "components/organisms/*"
       ],
       "@templates/*": [
-        "templates/*"
+        "components/templates/*"
       ],
       "@pages/*": [
         "pages/*"

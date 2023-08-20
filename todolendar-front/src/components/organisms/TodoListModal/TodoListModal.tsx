@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { DateTime } from 'luxon';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import ModalTemplate from '@src/templates/ModalTemplate/ModalTemplate';
+import ModalTemplate from '@src/components/templates/ModalTemplate/ModalTemplate';
 import TodoList from '@organisms/TodoList';
 
 import { httpPostTodos, httpPutTodo, httpDeleteTodo } from '@src/api/planner';
