@@ -1,8 +1,8 @@
-export interface Todo {
+export interface TodoItemType {
   id: string;
   text: string;
   completed: boolean;
   date: string;
 }
 
-export type TodoFilterOption = 'ALL' | 'COMPLETED' | 'INPROGRESS';
+export type TodoFilterOptionType = 'ALL' | 'COMPLETED' | 'INPROGRESS';

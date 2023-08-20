@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { Todo } from '@src/types/todoList';
+import { TodoItemType } from '@src/types/todoList';
 
 export const httpPostTodos = async ({
   text,
@@ -25,8 +25,8 @@ export const httpGetTodos = async ({
 }: {
   year: string;
   month?: string;
-}): Promise<Todo[]> => {
-  const { data } = await axios.get<Todo[]>(`/api/todolist`, {
+}): Promise<TodoItemType[]> => {
+  const { data } = await axios.get<TodoItemType[]>(`/api/todolist`, {
     params: { year, month },
   });
   return data;

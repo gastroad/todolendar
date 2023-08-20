@@ -3,8 +3,8 @@ import { DateTime } from 'luxon';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { httpPostTodos, httpPutTodo, httpDeleteTodo } from '@src/api/planner';
-import { Todo } from '@src/types/todoList';
-import type { TodoFilterOption } from '@src/types/todoList';
+import { TodoItemType } from '@src/types/todoList';
+import type { TodoFilterOptionType } from '@src/types/todoList';
 import TodoList from '@organisms/TodoList';
 import useInput from '@src/hooks/useInput/useInput';
 import closeURL from '../../../assets/images/close.png';
@@ -13,7 +13,7 @@ import './TodoListModal.scss';
 
 export interface TodoListModalProps {
   currentDate: DateTime;
-  todos: Todo[] | [];
+  todos: TodoItemType[] | [];
   openModal: () => void;
   closeModal: () => void;
 }
@@ -23,7 +23,7 @@ const TodoListModal: FC<TodoListModalProps> = ({
   todos,
   closeModal,
 }) => {
-  const [filter, setFilter] = useState<TodoFilterOption>('ALL');
+  const [filter, setFilter] = useState<TodoFilterOptionType>('ALL');
   const todoInput = useInput();
   const queryClient = useQueryClient();
   const postTodosMutation = useMutation(httpPostTodos, {
@@ -51,7 +51,7 @@ const TodoListModal: FC<TodoListModalProps> = ({
   };
 
   const toggleTodo = (id: string) => {
-    const todo = todos!.find((todo) => todo.id === id) as Todo;
+    const todo = todos!.find((todo) => todo.id === id) as TodoItemType;
     putTodoMutation.mutate({
       ...todo,
       completed: !todo.completed,

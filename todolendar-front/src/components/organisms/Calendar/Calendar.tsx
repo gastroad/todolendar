@@ -3,12 +3,12 @@ import { DateTime } from 'luxon';
 
 import CalendarHeader from '@molecules/CalendarHeader';
 import CalendarBody from '@molecules/CalendarBody';
-import { Todo } from '@src/types/todoList';
+import { TodoItemType } from '@src/types/todoList';
 
 import './Calendar.scss';
 
 export interface CalendarProps {
-  todos: Todo[];
+  todos: TodoItemType[];
   height?: string;
   currentDate: DateTime;
   handlePrevMonth: () => void;

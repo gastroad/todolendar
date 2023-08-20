@@ -7,13 +7,13 @@ import BarChart from '@organisms/BarChart';
 import PieChart from '@organisms/PieChart';
 import BubbleChart from '@organisms/BubbleChart';
 import { httpGetTodos } from '@src/api/planner';
-import { Todo } from '@src/types/todoList';
+import { TodoItemType } from '@src/types/todoList';
 
 import './DashboardPage.scss';
 
-export interface DashboardPageProps {}
+export interface DashboardPageProps { }
 const DashboardPage: FC<DashboardPageProps> = () => {
-  const getTodosQuery = useQuery<Todo[], Error>({
+  const getTodosQuery = useQuery<TodoItemType[], Error>({
     queryKey: ['todoList'],
     queryFn: () =>
       httpGetTodos({
@@ -29,7 +29,7 @@ const DashboardPage: FC<DashboardPageProps> = () => {
   }
 
   const groupedData = getTodosQuery.data.reduce(
-    (groups: { [month: string]: Todo[] }, item) => {
+    (groups: { [month: string]: TodoItemType[] }, item) => {
       const monthNumber = parseInt(item.date.split(' ')[1], 10);
       const month = `${monthNumber}월`;
       groups[month] = groups[month] ? [...groups[month], item] : [item];

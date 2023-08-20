@@ -8,14 +8,14 @@ import Calendar from '@organisms/Calendar';
 import TodoListModal from '@organisms/TodoListModal';
 import useModal from '@src/hooks/useModal/useModal';
 import { httpGetTodos } from '@src/api/planner';
-import { Todo } from '@src/types/todoList';
+import { TodoItemType } from '@src/types/todoList';
 
-export interface PlannerPageProps {}
+export interface PlannerPageProps { }
 
 const PlannerPage: FC<PlannerPageProps> = () => {
   const [currentDate, setCurrentDate] = useState(DateTime.now());
   const { isOpen, openModal, closeModal } = useModal();
-  const getTodosQuery = useQuery<Todo[], Error>({
+  const getTodosQuery = useQuery<TodoItemType[], Error>({
     queryKey: ['todoList'],
     queryFn: () =>
       httpGetTodos({

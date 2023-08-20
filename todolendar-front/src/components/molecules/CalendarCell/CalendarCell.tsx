@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { DateTime } from 'luxon';
 import cx from 'classnames';
 
-import { Todo } from '@src/types/todoList';
+import { TodoItemType } from '@src/types/todoList';
 import CalendarCellItem from '@atoms/CalendarCellItem';
 
 import './CalendarCell.scss';
@@ -11,7 +11,7 @@ export interface CalendarCellProps {
   dayOfMonth: number;
   isCurrentDate: boolean;
   date: DateTime;
-  currentDateTodos?: Todo[];
+  currentDateTodos?: TodoItemType[];
   handleDateSelect: (date: DateTime) => void;
 }
 

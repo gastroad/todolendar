@@ -1,9 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
 import CalendarCellItem, { CalendarCellItemProps } from './CalendarCellItem';
-import { Todo } from '@src/types/todoList';
+import { TodoItemType } from '@src/types/todoList';
 import { DateTime } from 'luxon';
 
-const todo: Todo = {
+const todo: TodoItemType = {
   id: '1',
   text: 'Task 1',
   completed: false,

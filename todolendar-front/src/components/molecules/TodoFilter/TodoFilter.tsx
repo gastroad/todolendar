@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
 import Button from '@atoms/Button';
-import type { TodoFilterOption } from '@src/types/todoList';
+import type { TodoFilterOptionType } from '@src/types/todoList';
 
 export interface TodoFilterProps {
-  filter: TodoFilterOption;
-  handleFilterOptions: (filterOption: TodoFilterOption) => void;
+  filter: TodoFilterOptionType;
+  handleFilterOptions: (filterOption: TodoFilterOptionType) => void;
 }
 
 const TodoFilter: FC<TodoFilterProps> = ({ filter, handleFilterOptions }) => {

@@ -1,12 +1,12 @@
 import { render, fireEvent } from '@testing-library/react';
 import { DateTime } from 'luxon';
 import TodoListModal from './TodoListModal';
-import { Todo } from '@src/types/todoList';
+import { TodoItemType } from '@src/types/todoList';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 describe('TodoListModal', () => {
   const currentDate = DateTime.local();
-  const todos: Todo[] = [
+  const todos: TodoItemType[] = [
     {
       id: '1',
       text: 'Todo 1',

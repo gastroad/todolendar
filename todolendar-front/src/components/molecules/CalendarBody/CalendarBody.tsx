@@ -2,14 +2,14 @@ import { FC } from 'react';
 import { DateTime } from 'luxon';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 
-import { Todo } from '@src/types/todoList';
+import { TodoItemType } from '@src/types/todoList';
 import CalendarCell from '@src/components/molecules/CalendarCell';
 import EmptyCalendarCell from '@atoms/EmptyCalendarCell';
 
 import './CalendarBody.scss';
 
 export interface CalendarBodyProps {
-  todos: Todo[] | [];
+  todos: TodoItemType[] | [];
   currentDate: DateTime;
   height: string;
   handleDateSelect: (date: DateTime) => void;

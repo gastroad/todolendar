@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import { Todo } from '@src/types/todoList';
+import { TodoItemType } from '@src/types/todoList';
 
 import './TodoItem.scss';
 
 export interface TodoItemProps {
-  todo: Todo;
+  todo: TodoItemType;
   toggleTodo: (id: string) => void;
   deleteTodo: (id: string) => void;
 }

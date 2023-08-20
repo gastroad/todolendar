@@ -5,18 +5,18 @@ import { useAutoAnimate } from '@formkit/auto-animate/react';
 import TodoForm from '@molecules/TodoForm';
 import TodoFilter from '@molecules/TodoFilter';
 import TodoItem from '@molecules/TodoItem';
-import type { Todo, TodoFilterOption } from '@src/types/todoList';
+import type { TodoItemType, TodoFilterOptionType } from '@src/types/todoList';
 
 import './TodoList.scss';
 
 export interface TodoListProps {
   currentDate: DateTime;
-  todos: Todo[] | [];
-  filter: TodoFilterOption;
+  todos: TodoItemType[] | [];
+  filter: TodoFilterOptionType;
   inputText: string;
   toggleTodo: (id: string) => void;
   deleteTodo: (id: string) => void;
-  handleFilterOptions: (filter: TodoFilterOption) => void;
+  handleFilterOptions: (filter: TodoFilterOptionType) => void;
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
   handleButtonClick: () => void;
 }
