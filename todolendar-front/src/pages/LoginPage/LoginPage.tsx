@@ -7,9 +7,7 @@ import LoginForm from '@src/components/organisms/LoginForm';
 import useInput from '@src/hooks/useInput/useInput';
 import { httpPostLogin } from '@src/api/auth';
 
-export interface LoginPageProps {}
-
-const LoginPage: FC<LoginPageProps> = () => {
+const LoginPage: FC = () => {
   const id = useInput();
   const pw = useInput();
   const navigate = useNavigate();
@@ -28,11 +26,9 @@ const LoginPage: FC<LoginPageProps> = () => {
   };
 
   return (
-    <>
-      <LoginTemplate>
-        <LoginForm login={login} id={id} pw={pw} />
-      </LoginTemplate>
-    </>
+    <LoginTemplate>
+      <LoginForm login={login} id={id} pw={pw} />
+    </LoginTemplate>
   );
 };
 

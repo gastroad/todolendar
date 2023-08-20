@@ -7,6 +7,13 @@ const useModal = (): {
 } => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   useEffect(() => {
     const closeModalOnOutsideClick = (e: MouseEvent) => {
       const modalContent = document.querySelector('.modal-content');
@@ -14,7 +21,6 @@ const useModal = (): {
         closeModal();
       }
     };
-
     const bindEscapeToClose = (e: KeyboardEvent) => {
       if (e.code === 'Escape') {
         closeModal();
@@ -30,13 +36,6 @@ const useModal = (): {
     };
   }, []);
 
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
 
   return { isOpen, openModal, closeModal };
 };

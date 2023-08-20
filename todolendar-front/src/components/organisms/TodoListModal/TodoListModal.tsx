@@ -2,19 +2,19 @@ import { FC, useState } from 'react';
 import { DateTime } from 'luxon';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
+import ModalTemplate from '@src/templates/ModalTemplate/ModalTemplate';
+import TodoList from '@organisms/TodoList';
+
 import { httpPostTodos, httpPutTodo, httpDeleteTodo } from '@src/api/planner';
 import { TodoItemType } from '@src/types/todoList';
-import type { TodoFilterOptionType } from '@src/types/todoList';
-import TodoList from '@organisms/TodoList';
 import useInput from '@src/hooks/useInput/useInput';
-import closeURL from '../../../assets/images/close.png';
+import type { TodoFilterOptionType } from '@src/types/todoList';
 
 import './TodoListModal.scss';
 
 export interface TodoListModalProps {
   currentDate: DateTime;
   todos: TodoItemType[] | [];
-  openModal: () => void;
   closeModal: () => void;
 }
 
@@ -51,7 +51,7 @@ const TodoListModal: FC<TodoListModalProps> = ({
   };
 
   const toggleTodo = (id: string) => {
-    const todo = todos!.find((todo) => todo.id === id) as TodoItemType;
+    const todo = todos!.find((todo) => todo.id === id)!;
     putTodoMutation.mutate({
       ...todo,
       completed: !todo.completed,
@@ -68,27 +68,19 @@ const TodoListModal: FC<TodoListModalProps> = ({
   };
 
   return (
-    <div className="modal-wrapper">
-      <div className="modal-content">
-        <img
-          alt="modal-close"
-          className="modal-close"
-          src={closeURL}
-          onClick={closeModal}
-        />
-        <TodoList
-          currentDate={currentDate}
-          todos={todos}
-          filter={filter}
-          inputText={todoInput.value}
-          toggleTodo={toggleTodo}
-          deleteTodo={deleteTodo}
-          handleFilterOptions={setFilter}
-          handleButtonClick={handleButtonClick}
-          handleInputChange={todoInput.onChange}
-        />
-      </div>
-    </div>
+    <ModalTemplate closeModal={closeModal}>
+      <TodoList
+        currentDate={currentDate}
+        todos={todos}
+        filter={filter}
+        toggleTodo={toggleTodo}
+        deleteTodo={deleteTodo}
+        handleFilterOptions={setFilter}
+        handleButtonClick={handleButtonClick}
+        inputText={todoInput.value}
+        handleInputChange={todoInput.onChange}
+      />
+    </ModalTemplate>
   );
 };
 export default TodoListModal;

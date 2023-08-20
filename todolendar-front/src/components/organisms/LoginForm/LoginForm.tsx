@@ -3,7 +3,7 @@ import { FC } from 'react';
 import TextInput from '@atoms/TextInput';
 import Button from '@atoms/Button';
 import Logo from '@atoms/Logo';
-import type { UseInputResult } from '@src/hooks/useInput/useInput';
+import { UseInputResult } from '@src/hooks/useInput/useInput';
 
 import './LoginForm.scss';
 
