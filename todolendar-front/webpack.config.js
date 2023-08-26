@@ -1,4 +1,6 @@
 const path = require("path");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -79,5 +81,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./index.html",
         }),
+        new BundleAnalyzerPlugin()
     ],
 };
